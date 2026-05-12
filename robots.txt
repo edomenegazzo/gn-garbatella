@@ -1,0 +1,8 @@
+# Sito in costruzione — blocca indicizzazione fino a contenuti reali.
+# Quando il sito è pronto, sostituisci con:
+#   User-agent: *
+#   Allow: /
+#   Sitemap: https://gngarbatella.it/sitemap.xml
+
+User-agent: *
+Disallow: /
