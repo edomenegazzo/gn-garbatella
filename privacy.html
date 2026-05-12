@@ -53,30 +53,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 56px;
+    height: 72px;
     padding: 0 24px;
     max-width: 1280px;
     margin: 0 auto;
   }
-  @media (max-width: 720px) { .bar-inner { padding: 0 20px; height: 52px; } }
+  @media (max-width: 720px) { .bar-inner { padding: 0 20px; height: 64px; } }
+  @media (max-width: 720px) {
+    .bar-brand { font-size: 15px; gap: 10px; }
+    .bar-logo { height: 36px; }
+  }
   .bar-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
     color: #f4f1e8;
     font-family: "Big Shoulders Display", sans-serif;
     font-weight: 800;
-    font-size: 16px;
+    font-size: 17px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
-  .bar-dot {
-    width: 10px;
-    height: 10px;
-    background: #cc1429;
-    border-radius: 50%;
+  .bar-logo {
+    height: 44px;
+    width: auto;
     flex-shrink: 0;
+    display: block;
   }
 
   .hamburger {
@@ -1528,7 +1531,7 @@
 <header class="bar">
   <div class="bar-inner">
     <a class="bar-brand" href="index.html">
-      <span class="bar-dot" aria-hidden="true"></span>
+      <img class="bar-logo" src="logo.svg" alt="" aria-hidden="true" />
       <span>Nucleo Garbatella</span>
     </a>
     <button class="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="main-menu">
@@ -1541,7 +1544,7 @@
 <nav class="menu" id="main-menu" aria-hidden="true" aria-label="Navigazione principale">
   <div class="menu-top">
     <a class="menu-brand" href="index.html">
-      <span class="bar-dot" aria-hidden="true"></span>
+      <img class="bar-logo" src="logo.svg" alt="" aria-hidden="true" />
       <span>Nucleo Garbatella</span>
     </a>
     <button class="menu-close" aria-label="Chiudi menu">

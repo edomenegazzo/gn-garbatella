@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2098" viewBox="380 168 358 469">
+  <title>Nucleo Garbatella - logo trasparente con bordo bianco</title>
+  <desc>Logo originale con sfondo trasparente e contorno bianco per uso su sfondi scuri.</desc>
+  <defs>
+    <path id="bolt" d="m 0,0 h 47.038 l -70.394,-164.02 46.83,13.836 -89.039,-163.436 4.955,40.218 51.081,99.678 -50.552,-18.799 z" transform="matrix(1.3333333,0,0,-1.3333333,589.06827,194.9804)" />
+    <path id="gmark" d="M 0,0 H 227.992 V -111.659 H 41.927 c 0,0 8.941,-106.123 66.754,-106.019 57.813,0.104 83.852,56.03 83.852,56.03 v 20.9 h 35.459 v -114.317 h -35.459 v 36.941 c 0,0 -18.515,-35.953 -83.852,-35.645 -64.442,0.305 -106.176,71.151 -107.181,144.29 z" transform="matrix(1.3333333,0,0,-1.3333333,406.8824,227.0416)" />
+  </defs>
+
+  <!-- White halo/outline placed behind the original marks for readability on dark backgrounds -->
+  <use href="#bolt" fill="none" stroke="#ffffff" stroke-width="12" stroke-linejoin="round" stroke-linecap="round" />
+  <use href="#gmark" fill="none" stroke="#ffffff" stroke-width="12" stroke-linejoin="round" stroke-linecap="round" />
+
+  <!-- Original artwork -->
+  <use href="#bolt" fill="#bf1b2c" fill-rule="nonzero" />
+  <use href="#gmark" fill="#231f20" fill-rule="nonzero" />
+</svg>
