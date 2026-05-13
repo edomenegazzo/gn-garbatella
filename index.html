@@ -59,10 +59,6 @@
     margin: 0 auto;
   }
   @media (max-width: 720px) { .bar-inner { padding: 0 20px; height: 64px; } }
-  @media (max-width: 720px) {
-    .bar-brand { font-size: 15px; gap: 10px; }
-    .bar-logo { height: 36px; }
-  }
   .bar-brand {
     display: flex;
     align-items: center;
@@ -80,6 +76,10 @@
     width: auto;
     flex-shrink: 0;
     display: block;
+  }
+  @media (max-width: 720px) {
+    .bar-brand { font-size: 15px; gap: 10px; }
+    .bar-logo { height: 36px; }
   }
 
   .hamburger {
@@ -228,9 +228,11 @@
   .page.active { display: block; }
 
   /* ===== HOME HERO ===== */
-  /* ===== HOME HERO — block layout, no flex tricks ===== */
+  /* ===== HOME HERO — video di sfondo con overlay scuro ===== */
   .home-hero {
-    background-color: #f4f1e8;
+    position: relative;
+    overflow: hidden;
+    background-color: #0c0c0c;
     min-height: calc(100vh - 56px - 4px);
     padding: 40px 0 60px;
   }
@@ -241,7 +243,35 @@
     }
   }
 
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Overlay scuro sopra al video per leggibilità del testo */
+  .home-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(12, 12, 12, 0.55) 0%,
+      rgba(12, 12, 12, 0.45) 50%,
+      rgba(12, 12, 12, 0.7) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
   .hero-inner {
+    position: relative;
+    z-index: 2;
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 24px;
@@ -251,7 +281,7 @@
   .hero-context {
     font-size: 13px;
     line-height: 1.4;
-    color: #2a2a2a;
+    color: rgba(244, 241, 232, 0.85);
     margin: 0;
   }
 
@@ -271,8 +301,9 @@
     line-height: 0.84;
     letter-spacing: -0.035em;
     text-transform: uppercase;
-    color: #0c0c0c;
+    color: #f4f1e8;
     margin-bottom: 32px;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
   }
 
   .hero-tagline {
@@ -280,13 +311,26 @@
     font-weight: 400;
     font-size: clamp(17px, 2.2vw, 22px);
     line-height: 1.5;
-    color: #0c0c0c;
+    color: #f4f1e8;
     max-width: 52ch;
     padding-top: 26px;
-    border-top: 2px solid #0c0c0c;
+    border-top: 2px solid #f4f1e8;
     margin: 0;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
   }
   .hero-tagline strong { font-weight: 600; }
+
+  /* Riduzione movimento: utenti con prefers-reduced-motion vedono solo poster, niente video */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video {
+      display: none;
+    }
+    .home-hero {
+      background-image: var(--hero-poster, none);
+      background-size: cover;
+      background-position: center;
+    }
+  }
 
   /* BUTTONS */
   .btn-primary {
@@ -1558,7 +1602,7 @@
     <a class="menu-link" href="manifesto.html">Manifesto</a>
     <a class="menu-link" href="chi-siamo.html">Chi siamo</a>
     <a class="menu-link" href="blog.html">Blog</a>
-    <a class="menu-link" href="iscriviti.html">Iscriviti</a>
+    <a class="menu-link" href="banchetto.html">Scrivici</a>
   </div>
 
   <div class="menu-foot">
@@ -1567,8 +1611,8 @@
       Movimento giovanile di Fratelli d'Italia<br />
       <a href="https://www.instagram.com/gngarbatella/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">@gngarbatella</a>
     </div>
-    <a class="menu-cta" href="iscriviti.html">
-      Iscriviti →
+    <a class="menu-cta" href="banchetto.html">
+      Scrivici →
     </a>
   </div>
 </nav>
@@ -1577,6 +1621,18 @@
 <main id="home">
 
   <section class="home-hero">
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="/video/hero-poster.jpg"
+      aria-hidden="true">
+      <source src="/video/hero.mp4" type="video/mp4">
+    </video>
+
     <div class="hero-inner">
       <p class="hero-context">Roma — Municipi VIII, IX, X.</p>
 
@@ -1662,11 +1718,11 @@
   <section class="iscriviti-cta">
     <div class="container">
       <div>
-        <h3>Tesserati.</h3>
-        <p>Per iscriversi a Gioventù Nazionale basta compilare il modulo. La procedura richiede pochi minuti e dà accesso a tutte le attività del nucleo.</p>
+        <h3>Conosciamoci.</h3>
+        <p>Se vuoi sapere di più sul nucleo, partecipare a un'attività o solo conoscerci, lasciaci un contatto. Ti scriviamo noi.</p>
       </div>
-      <a class="btn-primary" href="iscriviti.html">
-        Iscriviti ora →
+      <a class="btn-primary" href="banchetto.html">
+        Lasciaci un contatto →
       </a>
     </div>
   </section>
