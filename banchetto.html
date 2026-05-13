@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+<meta name="color-scheme" content="light" />
+<title>Resta in contatto · Nucleo Garbatella</title>
+<meta name="description" content="Lascia i tuoi contatti al Nucleo Garbatella." />
+<meta name="theme-color" content="#0c0c0c" />
+<meta name="robots" content="noindex, nofollow" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* Forza light mode su iOS/Android — niente auto dark mode */
+  html { color-scheme: light; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f1e8;
+    color: #0c0c0c;
+  }
+  body {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+  a { color: inherit; }
+
+  /* Fix Safari iOS: alcune versioni ignorano color-scheme e applicano auto-dark
+     ai contenitori senza background esplicito. Forziamo cream ovunque. */
+  main, section, .intro, .form-page, .container, form, .form-block {
+    background-color: #f4f1e8;
+  }
+  @media (prefers-color-scheme: dark) {
+    html, body, main, section, .intro, .form-page, .container, form, .form-block {
+      background-color: #f4f1e8 !important;
+      color: #0c0c0c !important;
+    }
+    .form-label, .form-help, .form-checkbox, .submit-note {
+      color: #0c0c0c !important;
+    }
+    .form-input, .form-select {
+      background-color: #fff !important;
+      color: #0c0c0c !important;
+    }
+  }
+
+  /* Tricolore */
+  .stripe { display: flex; height: 4px; }
+  .stripe .g { flex: 1; background: #006837; }
+  .stripe .w { flex: 1; background: #f4f1e8; }
+  .stripe .r { flex: 1; background: #cc1429; }
+
+  /* Header */
+  header.bar {
+    background: #0c0c0c;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+    padding: 0 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  @media (max-width: 720px) { .bar-inner { padding: 0 20px; height: 64px; } }
+  .bar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #f4f1e8;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .bar-logo {
+    height: 44px;
+    width: auto;
+    flex-shrink: 0;
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .bar-brand { font-size: 15px; gap: 10px; }
+    .bar-logo { height: 36px; }
+  }
+
+  /* Container */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  @media (max-width: 720px) { .container { padding: 0 20px; } }
+
+  /* Intro chiaro, non più hero nero */
+  .intro {
+    background: #f4f1e8;
+    padding: 36px 0 8px;
+  }
+  @media (max-width: 720px) { .intro { padding: 26px 0 6px; } }
+  .intro h1 {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: clamp(30px, 7vw, 46px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #0c0c0c;
+    margin: 0 0 12px;
+  }
+  .intro .lead {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #2a2a2a;
+    max-width: 50ch;
+    margin: 0;
+  }
+
+  /* Form section */
+  .form-page { padding: 28px 0 60px; }
+  @media (max-width: 720px) { .form-page { padding: 22px 0 44px; } }
+
+  .form-block { margin-bottom: 28px; }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .form-row:last-child { margin-bottom: 0; }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; gap: 14px; } }
+
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #0c0c0c;
+  }
+  .form-label .req { color: #cc1429; margin-left: 3px; }
+
+  .form-input,
+  .form-select {
+    background: #fff;
+    border: 1.5px solid rgba(12,12,12,0.25);
+    padding: 12px 14px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 16px;
+    color: #0c0c0c;
+    border-radius: 0;
+    width: 100%;
+    height: 50px;
+    transition: border-color 0.15s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    line-height: 1.4;
+  }
+  .form-input:focus,
+  .form-select:focus {
+    outline: none;
+    border-color: #cc1429;
+  }
+  .form-input.invalid,
+  .form-select.invalid {
+    border-color: #cc1429;
+    background: #fef6f6;
+  }
+
+  .form-select {
+    cursor: pointer;
+    padding-right: 38px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%230c0c0c' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 12px 8px;
+  }
+
+  .date-selects {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr 1fr;
+    gap: 8px;
+  }
+  @media (max-width: 380px) {
+    .date-selects { grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  .form-help {
+    font-size: 12px;
+    color: #6a6a6a;
+    margin-top: 4px;
+  }
+  .form-error {
+    font-size: 12.5px;
+    color: #cc1429;
+    margin-top: 4px;
+    display: none;
+    line-height: 1.3;
+  }
+  .form-error.show { display: block; }
+
+  /* Honeypot */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Consensi */
+  .form-consents {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #2a2a2a;
+  }
+  .form-checkbox input[type="checkbox"] {
+    width: 20px; height: 20px;
+    margin-top: 2px;
+    accent-color: #cc1429;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .form-checkbox.required-c { color: #0c0c0c; }
+  .form-checkbox a {
+    color: #cc1429;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .form-checkbox .req { color: #cc1429; margin-left: 3px; }
+
+  /* Submit */
+  .form-submit-row { margin-top: 28px; }
+  .form-submit {
+    width: 100%;
+    background: #cc1429;
+    color: #fff;
+    border: 2px solid #cc1429;
+    padding: 18px 26px;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease, opacity 0.15s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    min-height: 56px;
+  }
+  .form-submit:hover:not(:disabled),
+  .form-submit:active:not(:disabled) {
+    background: #a40f20;
+    border-color: #a40f20;
+  }
+  .form-submit:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .form-submit:focus-visible {
+    outline: 3px solid #ff5a6e;
+    outline-offset: 2px;
+  }
+
+  .submit-note {
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: #6a6a6a;
+    text-align: center;
+  }
+
+  /* Footer */
+  footer {
+    background: #0c0c0c;
+    color: rgba(244,241,232,0.6);
+    padding: 20px 0;
+    margin-top: 40px;
+  }
+  .footer-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+    font-size: 12px;
+    text-align: center;
+  }
+  footer a { color: rgba(244,241,232,0.75); text-decoration: underline; text-underline-offset: 2px; }
+
+  .form-input:focus-visible,
+  .form-select:focus-visible,
+  .form-checkbox input:focus-visible {
+    outline: 3px solid #ff5a6e;
+    outline-offset: 1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stripe" aria-hidden="true">
+  <span class="g"></span><span class="w"></span><span class="r"></span>
+</div>
+
+<header class="bar">
+  <div class="bar-inner">
+    <a class="bar-brand" href="/index.html">
+      <img class="bar-logo" src="/logo.svg" alt="" aria-hidden="true" />
+      Nucleo Garbatella
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="container">
+      <h1>Resta in contatto.</h1>
+      <p class="lead">Lasciaci i tuoi contatti per restare aggiornato sulle iniziative del Nucleo Garbatella.</p>
+    </div>
+  </section>
+
+  <section class="form-page">
+    <div class="container">
+      <form id="banchetto-form" novalidate>
+
+        <!-- Honeypot -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website-url">Lascia vuoto questo campo</label>
+          <input type="text" id="website-url" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="form-block">
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label" for="nome">Nome<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="nome" name="nome"
+                     required maxlength="80"
+                     autocomplete="given-name" autocapitalize="words"
+                     enterkeyhint="next" aria-required="true" />
+              <span class="form-error" id="err-nome"></span>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="cognome">Cognome<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="cognome" name="cognome"
+                     required maxlength="80"
+                     autocomplete="family-name" autocapitalize="words"
+                     enterkeyhint="next" aria-required="true" />
+              <span class="form-error" id="err-cognome"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field full">
+              <label class="form-label" for="email">Email<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="email" id="email" name="email"
+                     required maxlength="120"
+                     autocomplete="email" autocapitalize="none"
+                     enterkeyhint="next" aria-required="true" />
+              <span class="form-error" id="err-email"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field full">
+              <label class="form-label" for="telefono">Telefono<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="tel" id="telefono" name="telefono"
+                     required minlength="9" maxlength="20"
+                     autocomplete="tel"
+                     enterkeyhint="next" aria-required="true"
+                     placeholder="+39 333 1234567" />
+              <span class="form-error" id="err-telefono"></span>
+              <span class="form-help">Almeno 9 cifre, formato libero.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field full">
+              <label class="form-label">Data di nascita<span class="req" aria-hidden="true">*</span></label>
+              <div class="date-selects">
+                <select class="form-select" id="data_giorno" required aria-label="Giorno">
+                  <option value="">Giorno</option>
+                </select>
+                <select class="form-select" id="data_mese" required aria-label="Mese">
+                  <option value="">Mese</option>
+                  <option value="01">Gennaio</option>
+                  <option value="02">Febbraio</option>
+                  <option value="03">Marzo</option>
+                  <option value="04">Aprile</option>
+                  <option value="05">Maggio</option>
+                  <option value="06">Giugno</option>
+                  <option value="07">Luglio</option>
+                  <option value="08">Agosto</option>
+                  <option value="09">Settembre</option>
+                  <option value="10">Ottobre</option>
+                  <option value="11">Novembre</option>
+                  <option value="12">Dicembre</option>
+                </select>
+                <select class="form-select" id="data_anno" required aria-label="Anno">
+                  <option value="">Anno</option>
+                </select>
+              </div>
+              <input type="hidden" id="data_nascita" name="data_nascita" />
+              <span class="form-error" id="err-data_nascita"></span>
+              <span class="form-help">Devi avere almeno 14 anni.</span>
+            </div>
+          </div>
+
+          <div class="form-row" style="grid-template-columns: 3fr 1fr;">
+            <div class="form-field">
+              <label class="form-label" for="indirizzo_via">Via / Piazza<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="indirizzo_via" name="indirizzo_via"
+                     required maxlength="120"
+                     autocomplete="address-line1" autocapitalize="words"
+                     enterkeyhint="next" aria-required="true"
+                     placeholder="es. Via G. Pascoli" />
+              <span class="form-error" id="err-indirizzo_via"></span>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="indirizzo_civico">Civico<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="indirizzo_civico" name="indirizzo_civico"
+                     required maxlength="10"
+                     autocomplete="address-line2"
+                     enterkeyhint="next" aria-required="true"
+                     placeholder="24/B" />
+              <span class="form-error" id="err-indirizzo_civico"></span>
+            </div>
+          </div>
+
+          <div class="form-row" style="grid-template-columns: 1fr 2fr;">
+            <div class="form-field">
+              <label class="form-label" for="cap">CAP<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="cap" name="cap"
+                     required minlength="5" maxlength="5" pattern="\d{5}"
+                     inputmode="numeric"
+                     autocomplete="postal-code"
+                     enterkeyhint="next" aria-required="true"
+                     placeholder="00154" />
+              <span class="form-error" id="err-cap"></span>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="comune">Comune<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="comune" name="comune"
+                     required maxlength="80"
+                     autocomplete="address-level2" autocapitalize="words"
+                     enterkeyhint="next" aria-required="true"
+                     placeholder="Roma" />
+              <span class="form-error" id="err-comune"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-block">
+          <div class="form-consents">
+            <label class="form-checkbox required-c">
+              <input type="checkbox" id="consenso_privacy" name="consenso_privacy" required />
+              <span>Dichiaro di aver letto e compreso l'<a href="/privacy.html" target="_blank" rel="noopener">Informativa sul trattamento dei dati personali</a>.<span class="req" aria-hidden="true">*</span></span>
+            </label>
+            <label class="form-checkbox">
+              <input type="checkbox" id="consenso_newsletter" name="consenso_newsletter" />
+              <span>Acconsento a ricevere comunicazioni del Nucleo Garbatella.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="form-submit" id="submit-btn" disabled aria-disabled="true">
+            Invia
+          </button>
+          <p class="submit-note">I tuoi dati restano sul nostro server.</p>
+        </div>
+
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    © 2026 · Nucleo Garbatella · <a href="/privacy.html">Privacy</a> · <a href="/cookie.html">Cookie</a>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  const ENDPOINT = 'https://gn-garba-crm.vercel.app/api/public/contatti';
+  const MIN_AGE = 14;
+  const MIN_PHONE_DIGITS = 9;
+
+  const form = document.getElementById('banchetto-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const honeypot = document.getElementById('website-url');
+  const startTime = Date.now();
+
+  // ============ DATE SELECTS ============
+  const dGiorno = document.getElementById('data_giorno');
+  const dMese = document.getElementById('data_mese');
+  const dAnno = document.getElementById('data_anno');
+  const dHidden = document.getElementById('data_nascita');
+
+  function popolaAnni() {
+    const annoOggi = new Date().getFullYear();
+    const annoMax = annoOggi - MIN_AGE;
+    const annoMin = 1900;
+    for (let y = annoMax; y >= annoMin; y--) {
+      const o = document.createElement('option');
+      o.value = y;
+      o.textContent = y;
+      dAnno.appendChild(o);
+    }
+  }
+
+  function popolaGiorni() {
+    const m = parseInt(dMese.value);
+    const y = parseInt(dAnno.value);
+    let maxDay = 31;
+    if (m && y) {
+      maxDay = new Date(y, m, 0).getDate();
+    } else if (m) {
+      if ([4,6,9,11].includes(m)) maxDay = 30;
+      else if (m === 2) maxDay = 29;
+    }
+    const current = parseInt(dGiorno.value);
+    dGiorno.innerHTML = '<option value="">Giorno</option>';
+    for (let i = 1; i <= maxDay; i++) {
+      const o = document.createElement('option');
+      o.value = i;
+      o.textContent = i;
+      if (current === i) o.selected = true;
+      dGiorno.appendChild(o);
+    }
+  }
+
+  function aggiornaDataNascita() {
+    if (dGiorno.value && dMese.value && dAnno.value) {
+      const gg = String(dGiorno.value).padStart(2, '0');
+      dHidden.value = dAnno.value + '-' + dMese.value + '-' + gg;
+    } else {
+      dHidden.value = '';
+    }
+    updateSubmitState();
+  }
+
+  popolaAnni();
+  popolaGiorni();
+  dMese.addEventListener('change', () => { popolaGiorni(); aggiornaDataNascita(); });
+  dAnno.addEventListener('change', () => { popolaGiorni(); aggiornaDataNascita(); });
+  dGiorno.addEventListener('change', aggiornaDataNascita);
+
+  // ============ VALIDATION ============
+  function getErrorMessage(input) {
+    const v = input.validity;
+    if (v.valueMissing) return 'Campo obbligatorio.';
+    if (v.typeMismatch && input.type === 'email') return 'Email non valida.';
+    if (v.patternMismatch && input.name === 'cap') return 'Il CAP deve essere di 5 cifre.';
+    if (v.tooShort) return 'Troppo breve.';
+    if (v.tooLong) return 'Troppo lungo.';
+    return 'Valore non valido.';
+  }
+
+  function validateField(input) {
+    const errorEl = document.getElementById('err-' + input.name);
+
+    if (!input.checkValidity()) {
+      const msg = getErrorMessage(input);
+      if (errorEl) { errorEl.textContent = msg; errorEl.classList.add('show'); }
+      input.classList.add('invalid');
+      input.setAttribute('aria-invalid', 'true');
+      return false;
+    }
+
+    if (input.name === 'telefono') {
+      const digits = input.value.replace(/\D/g, '');
+      if (digits.length < MIN_PHONE_DIGITS) {
+        if (errorEl) { errorEl.textContent = 'Il numero deve contenere almeno ' + MIN_PHONE_DIGITS + ' cifre.'; errorEl.classList.add('show'); }
+        input.classList.add('invalid');
+        input.setAttribute('aria-invalid', 'true');
+        return false;
+      }
+    }
+
+    if (errorEl) { errorEl.classList.remove('show'); errorEl.textContent = ''; }
+    input.classList.remove('invalid');
+    input.removeAttribute('aria-invalid');
+    return true;
+  }
+
+  function validateDate() {
+    const errorEl = document.getElementById('err-data_nascita');
+    if (!dGiorno.value || !dMese.value || !dAnno.value) {
+      if (errorEl) { errorEl.textContent = 'Seleziona giorno, mese e anno.'; errorEl.classList.add('show'); }
+      return false;
+    }
+    if (errorEl) { errorEl.classList.remove('show'); errorEl.textContent = ''; }
+    return true;
+  }
+
+  function isFormValid() {
+    const requireds = form.querySelectorAll('.form-input[required]');
+    for (const input of requireds) {
+      if (!input.value.trim()) return false;
+      if (!input.checkValidity()) return false;
+    }
+    const tel = document.getElementById('telefono');
+    if (tel.value.replace(/\D/g, '').length < MIN_PHONE_DIGITS) return false;
+    if (!dGiorno.value || !dMese.value || !dAnno.value) return false;
+    if (!document.getElementById('consenso_privacy').checked) return false;
+    return true;
+  }
+
+  function updateSubmitState() {
+    const ok = isFormValid();
+    submitBtn.disabled = !ok;
+    submitBtn.setAttribute('aria-disabled', String(!ok));
+  }
+
+  form.querySelectorAll('.form-input').forEach(input => {
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => {
+      const errorEl = document.getElementById('err-' + input.name);
+      if (input.checkValidity() && errorEl && errorEl.classList.contains('show')) {
+        validateField(input);
+      }
+      updateSubmitState();
+    });
+  });
+  document.getElementById('consenso_privacy').addEventListener('change', updateSubmitState);
+  document.getElementById('consenso_newsletter').addEventListener('change', updateSubmitState);
+
+  // ============ SUBMIT ============
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (honeypot.value.trim() !== '') {
+      window.location.href = '/banchetto/grazie';
+      return;
+    }
+    if (Date.now() - startTime < 2000) {
+      window.location.href = '/banchetto/grazie';
+      return;
+    }
+
+    let allOk = true;
+    form.querySelectorAll('.form-input[required]').forEach(input => {
+      if (!validateField(input)) allOk = false;
+    });
+    if (!validateDate()) allOk = false;
+    if (!document.getElementById('consenso_privacy').checked) allOk = false;
+
+    if (!allOk) {
+      const firstInvalid = form.querySelector('.form-input.invalid, .form-select.invalid');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso...';
+
+    const payload = {
+      nome: form.nome.value.trim(),
+      cognome: form.cognome.value.trim(),
+      email: form.email.value.trim().toLowerCase(),
+      telefono: form.telefono.value.trim(),
+      data_nascita: dHidden.value,
+      indirizzo_via: form.indirizzo_via.value.trim(),
+      indirizzo_civico: form.indirizzo_civico.value.trim(),
+      cap: form.cap.value.trim(),
+      comune: form.comune.value.trim(),
+      consenso_privacy: document.getElementById('consenso_privacy').checked,
+      consenso_newsletter: document.getElementById('consenso_newsletter').checked,
+      fonte: 'banchetto'
+    };
+
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        window.location.href = '/banchetto/grazie';
+        return;
+      }
+      throw new Error('HTTP ' + response.status);
+
+    } catch (err) {
+      console.error('[Banchetto] Errore submit:', err);
+      const code = err.message || 'network';
+      alert('Si è verificato un errore, riprova o contatta il referente.\n\nCodice: ' + code);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Invia';
+      updateSubmitState();
+    }
+  });
+
+  updateSubmitState();
+})();
+</script>
+
+</body>
+</html>
