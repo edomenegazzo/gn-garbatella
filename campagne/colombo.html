@@ -52,7 +52,9 @@ e cambia twitter:card a summary_large_image -->
   }
   a { color: inherit; }
 
-  main, section, .container, form { background-color: #f4f1e8; }
+  main, section, form { background-color: #f4f1e8; }
+  /* .container NON ha background: è solo wrapper di centratura.
+     Eredita visivamente dalla sezione genitore (hero=nero, stats=cream, ecc.) */
 
   /* Tricolore */
   .stripe { display: flex; height: 4px; }
@@ -300,7 +302,6 @@ e cambia twitter:card a summary_large_image -->
     padding: 64px 0 80px;
   }
   @media (max-width: 720px) { .form-section { padding: 48px 0 60px; } }
-  .form-section .container { background: #f4f1e8; }
 
   .form-section h2 {
     font-family: "Big Shoulders Display", sans-serif;
