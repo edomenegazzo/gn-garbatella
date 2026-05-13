@@ -747,8 +747,8 @@ e cambia twitter:card a summary_large_image -->
 
         <!-- Honeypot -->
         <div class="hp-field" aria-hidden="true">
-          <label for="website-url">Lascia vuoto questo campo</label>
-          <input type="text" id="website-url" name="website" tabindex="-1" autocomplete="off" />
+          <label for="_hp">Lascia vuoto questo campo</label>
+          <input type="text" id="_hp" name="_hp" tabindex="-1" autocomplete="off" value="" />
         </div>
 
         <!-- ANAGRAFICA -->
@@ -850,49 +850,6 @@ e cambia twitter:card a summary_large_image -->
                 </div>
               </div>
               <input type="hidden" id="data_nascita" name="data_nascita" />
-            </div>
-          </div>
-
-          <div class="form-row" style="grid-template-columns: 3fr 1fr;">
-            <div class="form-field">
-              <label class="form-label" for="indirizzo_via">Via / Piazza</label>
-              <input class="form-input" type="text" id="indirizzo_via" name="indirizzo_via"
-                     maxlength="120"
-                     autocomplete="address-line1" autocapitalize="words"
-                     enterkeyhint="next"
-                     placeholder="es. Via G. Pascoli" />
-              <span class="form-error" id="err-indirizzo_via"></span>
-            </div>
-            <div class="form-field">
-              <label class="form-label" for="indirizzo_civico">Civico</label>
-              <input class="form-input" type="text" id="indirizzo_civico" name="indirizzo_civico"
-                     maxlength="10"
-                     autocomplete="address-line2"
-                     enterkeyhint="next"
-                     placeholder="24/B" />
-              <span class="form-error" id="err-indirizzo_civico"></span>
-            </div>
-          </div>
-
-          <div class="form-row" style="grid-template-columns: 1fr 2fr;">
-            <div class="form-field">
-              <label class="form-label" for="cap">CAP</label>
-              <input class="form-input" type="text" id="cap" name="cap"
-                     maxlength="5" pattern="\d{5}"
-                     inputmode="numeric"
-                     autocomplete="postal-code"
-                     enterkeyhint="next"
-                     placeholder="00154" />
-              <span class="form-error" id="err-cap"></span>
-            </div>
-            <div class="form-field">
-              <label class="form-label" for="comune">Comune</label>
-              <input class="form-input" type="text" id="comune" name="comune"
-                     maxlength="80"
-                     autocomplete="address-level2" autocapitalize="words"
-                     enterkeyhint="next"
-                     placeholder="Roma" />
-              <span class="form-error" id="err-comune"></span>
             </div>
           </div>
         </div>
@@ -1011,7 +968,7 @@ e cambia twitter:card a summary_large_image -->
 
   const form = document.getElementById('colombo-form');
   const submitBtn = document.getElementById('submit-btn');
-  const honeypot = document.getElementById('website-url');
+  const honeypot = document.getElementById('_hp');
   const startTime = Date.now();
 
   // ============ DATE SELECTS ============
@@ -1216,14 +1173,52 @@ e cambia twitter:card a summary_large_image -->
     updateSubmitState();
   });
 
+  // ============ HELPER GESTIONE RISPOSTE ============
+  async function handleResponse(response, grazieUrl) {
+    // 201 Created → redirect. 200 OK = caso honeypot (frontend non distingue) → redirect.
+    if (response.status === 201 || response.status === 200) {
+      window.location.href = grazieUrl;
+      return 'OK';
+    }
+
+    if (response.status === 400) {
+      let msg = 'Errore nei dati inseriti:\n\n';
+      try {
+        const body = await response.json();
+        const details = body.details;
+        if (Array.isArray(details) && details.length) {
+          details.forEach(d => {
+            if (typeof d === 'string') msg += '- ' + d + '\n';
+            else if (d && typeof d === 'object') msg += '- ' + (d.field ? d.field + ': ' : '') + (d.message || JSON.stringify(d)) + '\n';
+          });
+        } else if (details && typeof details === 'object') {
+          Object.entries(details).forEach(([k, v]) => msg += '- ' + k + ': ' + v + '\n');
+        } else if (body.error) {
+          msg = body.error;
+        } else {
+          msg = 'Dati non validi. Controlla i campi e riprova.';
+        }
+      } catch (_) {
+        msg = 'Dati non validi. Controlla i campi e riprova.';
+      }
+      alert(msg);
+      return 'VALIDATION';
+    }
+
+    if (response.status === 429) {
+      alert('Troppe richieste, riprova più tardi.');
+      return 'RATE_LIMIT';
+    }
+
+    alert('Si è verificato un errore, riprova.');
+    return 'SERVER_ERROR';
+  }
+
   // ============ SUBMIT ============
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    if (honeypot.value.trim() !== '') {
-      window.location.href = '/campagne/colombo/grazie';
-      return;
-    }
+    // Time-check anti-spam locale. Honeypot _hp arriva al backend nel payload.
     if (Date.now() - startTime < 2000) {
       window.location.href = '/campagne/colombo/grazie';
       return;
@@ -1272,21 +1267,16 @@ e cambia twitter:card a summary_large_image -->
       cognome: form.cognome.value.trim(),
       email: form.email.value.trim().toLowerCase(),
       telefono: form.telefono.value.trim(),
-      municipio: form.municipio.value,
       anno_nascita: parseInt(dAnno.value, 10),
       data_nascita: dHidden.value || null,
-      indirizzo_via: form.indirizzo_via.value.trim(),
-      indirizzo_civico: form.indirizzo_civico.value.trim(),
-      cap: form.cap.value.trim(),
-      comune: form.comune.value.trim(),
+      municipio: form.municipio.value,
       consenso_privacy: true,
-      fonte: 'form_online',
-      campagna: 'basta_morti_colombo',
       risposte: {
         trattamento_sicurezza: getRadioValue('trattamento_sicurezza'),
         proposta_valida: getRadioValue('proposta_valida'),
         proposta_libera: textarea.value.trim()
-      }
+      },
+      _hp: honeypot.value || ''
     };
 
     try {
@@ -1295,15 +1285,16 @@ e cambia twitter:card a summary_large_image -->
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      if (response.ok) {
-        window.location.href = '/campagne/colombo/grazie';
-        return;
-      }
-      throw new Error('HTTP ' + response.status);
+
+      const result = await handleResponse(response, '/campagne/colombo/grazie');
+      if (result === 'OK') return;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Partecipa alla proposta';
+      updateSubmitState();
+
     } catch (err) {
-      console.error('[Colombo] Errore submit:', err);
-      const code = err.message || 'network';
-      alert('Si è verificato un errore, riprova o contattaci.\n\nCodice: ' + code);
+      console.error('[Colombo] Errore di rete:', err);
+      alert('Si è verificato un errore, riprova.');
       submitBtn.disabled = false;
       submitBtn.textContent = 'Partecipa alla proposta';
       updateSubmitState();
