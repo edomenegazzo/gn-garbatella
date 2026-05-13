@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>Basta morti su via Cristoforo Colombo · Nucleo Garbatella</title>
+<meta name="description" content="Via Cristoforo Colombo: 1.903 incidenti e 20 morti in dieci anni. Firma la proposta del Nucleo Garbatella per una strada più sicura." />
+<meta name="theme-color" content="#0c0c0c" />
+<link rel="canonical" href="https://nucleogarbatella.it/campagne/colombo" />
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Nucleo Garbatella" />
+<meta property="og:locale" content="it_IT" />
+<meta property="og:url" content="https://nucleogarbatella.it/campagne/colombo" />
+<meta property="og:title" content="BASTA MORTI SU VIA CRISTOFORO COLOMBO" />
+<meta property="og:description" content="1.903 incidenti e 20 morti in dieci anni. Una proposta del Nucleo Garbatella per la sicurezza stradale della Colombo." />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="BASTA MORTI SU VIA CRISTOFORO COLOMBO" />
+<meta name="twitter:description" content="1.903 incidenti e 20 morti in dieci anni. Firma la proposta." />
+
+<!-- TODO: quando avrai un'immagine 1200x630 per la campagna, decommenta queste righe:
+<meta property="og:image" content="https://nucleogarbatella.it/og/campagna-colombo.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Basta morti su via Cristoforo Colombo" />
+<meta name="twitter:image" content="https://nucleogarbatella.it/og/campagna-colombo.jpg" />
+e cambia twitter:card a summary_large_image -->
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+<style>
+  html { color-scheme: light; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background-color: #f4f1e8;
+    color: #0c0c0c;
+  }
+  body {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.55;
+  }
+  a { color: inherit; }
+
+  main, section, .container, form { background-color: #f4f1e8; }
+  /* Sezioni intenzionalmente scure: override esplicito */
+  .hero { background-color: #0c0c0c; }
+  .share { background-color: #0c0c0c; }
+
+  @media (prefers-color-scheme: dark) {
+    html, body, main, .container, form,
+    .stats, .manifesto, .form-section {
+      background-color: #f4f1e8 !important;
+      color: #0c0c0c !important;
+    }
+    /* Sezioni scure restano scure anche in dark mode */
+    .hero, .share, .manifesto-claim {
+      background-color: #0c0c0c !important;
+    }
+    .hero h1, .hero h2, .hero-eyebrow, .hero-tagline,
+    .share h2, .share p, .share-btn,
+    .manifesto-claim p {
+      color: inherit !important;
+    }
+    .hero h1 { color: #f4f1e8 !important; }
+    .hero h2 { color: rgba(244,241,232,0.75) !important; }
+    .hero-eyebrow { color: #ff5a6e !important; }
+    .hero-tagline { color: rgba(244,241,232,0.85) !important; }
+    .share h2 { color: #f4f1e8 !important; }
+    .share p { color: rgba(244,241,232,0.75) !important; }
+    .share-btn { color: #f4f1e8 !important; }
+    .manifesto-claim p { color: #f4f1e8 !important; }
+    .manifesto-claim p:last-child { color: #ff5a6e !important; }
+
+    /* Form: input bianchi su sezione cream */
+    .form-input, .form-textarea {
+      background-color: #ffffff !important;
+      color: #0c0c0c !important;
+    }
+    .form-radio {
+      background-color: #ffffff !important;
+    }
+    .form-radio:has(input:checked) {
+      background-color: #fef6f6 !important;
+    }
+    .form-label, .form-help, .form-checkbox, .form-question-label,
+    .form-block-title, .form-section h2, .form-section .lead,
+    .stat-number, .stat-label,
+    .manifesto p, .manifesto-eyebrow, .manifesto-cta p {
+      color: #0c0c0c !important;
+    }
+    .manifesto p { color: #2a2a2a !important; }
+    .manifesto-eyebrow { color: #cc1429 !important; }
+    .stat-number--accent { color: #cc1429 !important; }
+    .stat-label, .form-help { color: #6a6a6a !important; }
+    .form-block-title { color: #cc1429 !important; }
+  }
+
+  /* Tricolore */
+  .stripe { display: flex; height: 4px; }
+  .stripe .g { flex: 1; background: #006837; }
+  .stripe .w { flex: 1; background: #f4f1e8; }
+  .stripe .r { flex: 1; background: #cc1429; }
+
+  /* Header */
+  header.bar { background: #0c0c0c; position: sticky; top: 0; z-index: 50; }
+  .bar-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    height: 72px; padding: 0 24px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  @media (max-width: 720px) { .bar-inner { padding: 0 20px; height: 64px; } }
+  .bar-brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; color: #f4f1e8;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800; font-size: 17px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .bar-logo { height: 44px; width: auto; flex-shrink: 0; display: block; }
+  @media (max-width: 720px) {
+    .bar-brand { font-size: 15px; gap: 10px; }
+    .bar-logo { height: 36px; }
+  }
+
+  /* Container */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .container--narrow { max-width: 760px; }
+  @media (max-width: 720px) { .container { padding: 0 20px; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: #0c0c0c;
+    color: #f4f1e8;
+    padding: 72px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(204,20,41,0.8) 50%, transparent);
+  }
+  @media (max-width: 720px) { .hero { padding: 48px 0 44px; } }
+  .hero-eyebrow {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ff5a6e;
+    margin: 0 0 18px;
+  }
+  .hero h1 {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 900;
+    font-size: clamp(54px, 13vw, 160px);
+    line-height: 0.86;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #f4f1e8;
+    margin: 0 0 8px;
+  }
+  .hero h2 {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 4.5vw, 40px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: rgba(244,241,232,0.75);
+    margin: 0 0 28px;
+  }
+  .hero-tagline {
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.55;
+    color: rgba(244,241,232,0.85);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .hero-cta-row {
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #cc1429;
+    color: #fff;
+    border: 2px solid #cc1429;
+    padding: 16px 28px;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .hero-cta:hover { background: #a40f20; border-color: #a40f20; }
+  .hero-cta--ghost {
+    background: transparent;
+    color: #f4f1e8;
+    border-color: rgba(244,241,232,0.45);
+  }
+  .hero-cta--ghost:hover {
+    background: transparent;
+    border-color: #f4f1e8;
+  }
+
+  /* ============ STATS ============ */
+  .stats {
+    background: #f4f1e8;
+    padding: 60px 0;
+    border-bottom: 1px solid rgba(12,12,12,0.1);
+  }
+  @media (max-width: 720px) { .stats { padding: 44px 0; } }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 760px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; } }
+  .stat {
+    text-align: left;
+  }
+  .stat-number {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 900;
+    font-size: clamp(48px, 8vw, 92px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: #0c0c0c;
+    margin: 0 0 6px;
+    display: block;
+  }
+  .stat-number--accent { color: #cc1429; }
+  .stat-label {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6a6a6a;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* ============ MANIFESTO ============ */
+  .manifesto {
+    background: #f4f1e8;
+    padding: 64px 0 72px;
+  }
+  @media (max-width: 720px) { .manifesto { padding: 48px 0 56px; } }
+  .manifesto-eyebrow {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #cc1429;
+    margin: 0 0 20px;
+  }
+  .manifesto p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    margin: 0 0 22px;
+  }
+  .manifesto p:last-of-type { margin-bottom: 0; }
+  .manifesto strong { color: #0c0c0c; font-weight: 600; }
+  .manifesto em {
+    font-style: italic;
+    color: #0c0c0c;
+  }
+
+  .manifesto-claim {
+    background: #0c0c0c;
+    color: #f4f1e8;
+    padding: 36px 32px;
+    margin: 40px 0;
+    border-left: 6px solid #cc1429;
+  }
+  @media (max-width: 720px) { .manifesto-claim { padding: 28px 22px; margin: 32px 0; } }
+  .manifesto-claim p {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 4vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #f4f1e8;
+    margin: 0;
+  }
+  .manifesto-claim p + p {
+    margin-top: 8px;
+    color: rgba(244,241,232,0.85);
+  }
+  .manifesto-claim p:last-child {
+    color: #ff5a6e;
+  }
+
+  .manifesto-cta {
+    background: #fff;
+    border: 1.5px solid rgba(12,12,12,0.15);
+    padding: 28px 30px;
+    margin-top: 40px;
+  }
+  @media (max-width: 720px) { .manifesto-cta { padding: 24px 22px; } }
+  .manifesto-cta p {
+    margin: 0 0 8px;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  .manifesto-cta p:last-child { margin-bottom: 0; }
+  .manifesto-cta strong {
+    display: block;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #0c0c0c;
+    margin-bottom: 6px;
+  }
+
+  /* ============ FORM ============ */
+  .form-section {
+    background: #f4f1e8;
+    border-top: 4px solid #cc1429;
+    padding: 64px 0 80px;
+  }
+  @media (max-width: 720px) { .form-section { padding: 48px 0 60px; } }
+  .form-section .container { background: #f4f1e8; }
+
+  .form-section h2 {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 900;
+    font-size: clamp(34px, 6vw, 54px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #0c0c0c;
+    margin: 0 0 12px;
+  }
+  .form-section .lead {
+    font-size: 17px;
+    line-height: 1.55;
+    color: #2a2a2a;
+    margin: 0 0 36px;
+    max-width: 56ch;
+  }
+
+  .form-block { margin-bottom: 32px; }
+  .form-block-title {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #cc1429;
+    margin: 0 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(12,12,12,0.12);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .form-row:last-child { margin-bottom: 0; }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; gap: 14px; } }
+
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #0c0c0c;
+  }
+  .form-label .req { color: #cc1429; margin-left: 3px; }
+
+  .form-input, .form-textarea {
+    background: #fff;
+    border: 1.5px solid rgba(12,12,12,0.25);
+    padding: 12px 14px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 16px;
+    color: #0c0c0c;
+    border-radius: 0;
+    width: 100%;
+    transition: border-color 0.15s ease;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .form-input { height: 50px; }
+  .form-textarea {
+    min-height: 130px;
+    resize: vertical;
+    line-height: 1.5;
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+  .form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: #cc1429;
+  }
+  .form-input.invalid, .form-textarea.invalid {
+    border-color: #cc1429;
+    background: #fef6f6;
+  }
+
+  .form-help { font-size: 12px; color: #6a6a6a; margin-top: 4px; }
+  .form-error {
+    font-size: 12.5px;
+    color: #cc1429;
+    margin-top: 4px;
+    display: none;
+    line-height: 1.3;
+  }
+  .form-error.show { display: block; }
+
+  .counter {
+    font-size: 12px;
+    color: #6a6a6a;
+    margin-top: 4px;
+    text-align: right;
+  }
+  .counter.near { color: #cc1429; }
+
+  /* Radio button custom */
+  .form-question {
+    margin-bottom: 28px;
+  }
+  .form-question:last-child { margin-bottom: 0; }
+  .form-question-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0c0c0c;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+  .form-question-label .req { color: #cc1429; margin-left: 3px; }
+
+  .form-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .form-radio {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 12px 14px;
+    border: 1.5px solid rgba(12,12,12,0.18);
+    background: #fff;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    font-size: 15px;
+    line-height: 1.45;
+    color: #2a2a2a;
+  }
+  .form-radio:hover {
+    border-color: rgba(12,12,12,0.4);
+  }
+  .form-radio input[type="radio"] {
+    width: 18px; height: 18px;
+    margin-top: 1px;
+    accent-color: #cc1429;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .form-radio input[type="radio"]:checked + span {
+    color: #0c0c0c;
+    font-weight: 500;
+  }
+  .form-radio:has(input:checked) {
+    border-color: #cc1429;
+    background: #fef6f6;
+  }
+
+  /* Honeypot */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Consenso */
+  .form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #2a2a2a;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(12,12,12,0.15);
+  }
+  .form-checkbox input[type="checkbox"] {
+    width: 20px; height: 20px;
+    margin-top: 2px;
+    accent-color: #cc1429;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .form-checkbox a {
+    color: #cc1429;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .form-checkbox .req { color: #cc1429; margin-left: 3px; }
+
+  /* Submit */
+  .form-submit-row { margin-top: 32px; }
+  .form-submit {
+    width: 100%;
+    background: #cc1429;
+    color: #fff;
+    border: 2px solid #cc1429;
+    padding: 20px 28px;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease, opacity 0.15s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    min-height: 60px;
+  }
+  .form-submit:hover:not(:disabled),
+  .form-submit:active:not(:disabled) {
+    background: #a40f20;
+    border-color: #a40f20;
+  }
+  .form-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  .form-submit:focus-visible {
+    outline: 3px solid #ff5a6e;
+    outline-offset: 2px;
+  }
+
+  /* ============ SHARE ============ */
+  .share {
+    background: #0c0c0c;
+    color: #f4f1e8;
+    padding: 56px 0;
+  }
+  @media (max-width: 720px) { .share { padding: 44px 0; } }
+  .share h2 {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: clamp(26px, 4.5vw, 38px);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #f4f1e8;
+    margin: 0 0 8px;
+  }
+  .share p {
+    color: rgba(244,241,232,0.75);
+    margin: 0 0 24px;
+    max-width: 50ch;
+    font-size: 16px;
+  }
+  .share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: #f4f1e8;
+    border: 1.5px solid rgba(244,241,232,0.4);
+    padding: 12px 20px;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+  }
+  .share-btn:hover {
+    background: rgba(244,241,232,0.06);
+    border-color: #f4f1e8;
+  }
+
+  /* Footer */
+  footer {
+    background: #0c0c0c;
+    color: rgba(244,241,232,0.55);
+    padding: 24px 0;
+    border-top: 1px solid rgba(244,241,232,0.08);
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    font-size: 12.5px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  footer a {
+    color: rgba(244,241,232,0.75);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  @media (max-width: 600px) {
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+
+  .form-input:focus-visible,
+  .form-textarea:focus-visible,
+  .form-radio input:focus-visible,
+  .form-checkbox input:focus-visible {
+    outline: 3px solid #ff5a6e;
+    outline-offset: 1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stripe" aria-hidden="true">
+  <span class="g"></span><span class="w"></span><span class="r"></span>
+</div>
+
+<header class="bar">
+  <div class="bar-inner">
+    <a class="bar-brand" href="/index.html">
+      <img class="bar-logo" src="/logo.svg" alt="" aria-hidden="true" />
+      Nucleo Garbatella
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Campagna del Nucleo Garbatella</p>
+      <h1>Basta morti</h1>
+      <h2>su via Cristoforo Colombo</h2>
+      <p class="hero-tagline">Una strada di 27 chilometri, vent'anni di vittime, una città che non interviene. Costruiamo insieme una proposta da portare in Municipio.</p>
+      <div class="hero-cta-row">
+        <a href="#firma" class="hero-cta">Firma la proposta →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-number">1.903</span>
+          <p class="stat-label">Incidenti registrati</p>
+        </div>
+        <div class="stat">
+          <span class="stat-number stat-number--accent">20</span>
+          <p class="stat-label">Vittime</p>
+        </div>
+        <div class="stat">
+          <span class="stat-number">27</span>
+          <p class="stat-label">Km di strada</p>
+        </div>
+        <div class="stat">
+          <span class="stat-number">10</span>
+          <p class="stat-label">Anni di dati · 2014–2024</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto">
+    <div class="container container--narrow">
+      <p class="manifesto-eyebrow">Il manifesto della campagna</p>
+
+      <p>Via Cristoforo Colombo è la strada urbana più grande d'Italia. Con i suoi 27 chilometri di lunghezza, presenta sempre — e da sempre — il suo conto: <strong>1.903 incidenti e 20 morti tra il 2014 e il 2024</strong>. Oltre 190 sinistri e due decessi all'anno, una media rispettata con puntualità da brividi anche nel 2025 e in via di definizione sugli stessi parametri per l'anno in corso.</p>
+
+      <div class="manifesto-claim">
+        <p>Non è più un caso.</p>
+        <p>Non è più una coincidenza.</p>
+        <p>Sta succedendo ancora e ancora.</p>
+      </div>
+
+      <p>Ogni incidente lascia dietro di sé una famiglia nel dolore, una vita interrotta, un vuoto che non si colmerà mai.</p>
+
+      <p>È chiaro ormai che la nostra sicurezza, e quella dei nostri figli, non sia un tema fondamentale per chi governa la nostra città. Non possiamo più far finta di niente: la sicurezza non può arrivare dopo l'ennesima vittima.</p>
+
+      <div class="manifesto-cta">
+        <p><strong>Costruiamo insieme una proposta.</strong></p>
+        <p>Compila il modulo qui sotto e fallo compilare a chi conosci. Raccogliamo le voci del quartiere e portiamo un progetto concreto all'attenzione dell'amministrazione.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section" id="firma">
+    <div class="container container--narrow">
+      <h2>Firma la proposta</h2>
+      <p class="lead">Lasciaci i tuoi dati e le tue idee. Costruiamo insieme un progetto da portare in Municipio.</p>
+
+      <form id="colombo-form" novalidate>
+
+        <!-- Honeypot -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website-url">Lascia vuoto questo campo</label>
+          <input type="text" id="website-url" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <!-- ANAGRAFICA -->
+        <div class="form-block">
+          <p class="form-block-title">I tuoi dati</p>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label" for="nome">Nome<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="nome" name="nome"
+                     required maxlength="80"
+                     autocomplete="given-name" autocapitalize="words"
+                     enterkeyhint="next" aria-required="true" />
+              <span class="form-error" id="err-nome"></span>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="cognome">Cognome<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="cognome" name="cognome"
+                     required maxlength="80"
+                     autocomplete="family-name" autocapitalize="words"
+                     enterkeyhint="next" aria-required="true" />
+              <span class="form-error" id="err-cognome"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field full">
+              <label class="form-label" for="email">Email<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="email" id="email" name="email"
+                     required maxlength="120"
+                     autocomplete="email" autocapitalize="none"
+                     enterkeyhint="next" aria-required="true" />
+              <span class="form-error" id="err-email"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field full">
+              <label class="form-label" for="telefono">Telefono<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="tel" id="telefono" name="telefono"
+                     required minlength="9" maxlength="20"
+                     autocomplete="tel"
+                     enterkeyhint="next" aria-required="true"
+                     placeholder="+39 333 1234567" />
+              <span class="form-error" id="err-telefono"></span>
+              <span class="form-help">Almeno 9 cifre, formato libero.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field full">
+              <label class="form-label" for="residenza">Residenza<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="residenza" name="residenza"
+                     required maxlength="160"
+                     autocomplete="street-address" autocapitalize="words"
+                     enterkeyhint="next" aria-required="true"
+                     placeholder="Quartiere o indirizzo" />
+              <span class="form-error" id="err-residenza"></span>
+              <span class="form-help">Quartiere o indirizzo completo, come preferisci.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DOMANDE -->
+        <div class="form-block">
+          <p class="form-block-title">Le domande della campagna</p>
+
+          <div class="form-question">
+            <span class="form-question-label">
+              1. Ritieni che chi governa la nostra città abbia trattato con attenzione il tema della sicurezza stradale sulla Colombo?<span class="req" aria-hidden="true">*</span>
+            </span>
+            <div class="form-radio-group" role="radiogroup" aria-required="true">
+              <label class="form-radio">
+                <input type="radio" name="trattamento_sicurezza" value="non_fatto_nulla" required />
+                <span>No, non è mai stato fatto nulla</span>
+              </label>
+              <label class="form-radio">
+                <input type="radio" name="trattamento_sicurezza" value="municipio_si_e_mosso" required />
+                <span>Sì, dopo le tragedie avvenute il municipio si è mosso</span>
+              </label>
+            </div>
+            <span class="form-error" id="err-trattamento_sicurezza"></span>
+          </div>
+
+          <div class="form-question">
+            <span class="form-question-label">
+              2. Ritieni che una di queste proposte possa essere valida?<span class="req" aria-hidden="true">*</span>
+            </span>
+            <div class="form-radio-group" role="radiogroup" aria-required="true">
+              <label class="form-radio">
+                <input type="radio" name="proposta_valida" value="guard_rail" required />
+                <span>Guard rail</span>
+              </label>
+              <label class="form-radio">
+                <input type="radio" name="proposta_valida" value="sensibilizzazione" required />
+                <span>Campagne di sensibilizzazione sul tema della sicurezza stradale</span>
+              </label>
+              <label class="form-radio">
+                <input type="radio" name="proposta_valida" value="autovelox" required />
+                <span>Autovelox</span>
+              </label>
+              <label class="form-radio">
+                <input type="radio" name="proposta_valida" value="altro" required />
+                <span>No, credo che occorra altro</span>
+              </label>
+            </div>
+            <span class="form-error" id="err-proposta_valida"></span>
+          </div>
+
+          <div class="form-question">
+            <label class="form-question-label" for="proposta_libera">
+              3. Scrivici la tua proposta, per migliorare la sicurezza stradale della Colombo<span class="req" aria-hidden="true">*</span>
+            </label>
+            <textarea class="form-textarea" id="proposta_libera" name="proposta_libera"
+                      required maxlength="1000" minlength="3"
+                      rows="6" aria-required="true"
+                      placeholder="La tua idea, il tuo punto di vista, una soluzione che vorresti vedere realizzata..."></textarea>
+            <div class="counter" id="counter"><span id="counter-num">0</span> / 1000</div>
+            <span class="form-error" id="err-proposta_libera"></span>
+          </div>
+        </div>
+
+        <!-- CONSENSO -->
+        <label class="form-checkbox">
+          <input type="checkbox" id="consenso_privacy" name="consenso_privacy" required />
+          <span>Dichiaro di aver letto e compreso l'<a href="/privacy.html" target="_blank" rel="noopener">Informativa sul trattamento dei dati personali</a> e acconsento al trattamento dei miei dati personali per le finalità ivi indicate.<span class="req" aria-hidden="true">*</span></span>
+        </label>
+
+        <div class="form-submit-row">
+          <button type="submit" class="form-submit" id="submit-btn" disabled aria-disabled="true">
+            Partecipa alla proposta
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- SHARE -->
+  <section class="share">
+    <div class="container container--narrow">
+      <h2>Condividi la campagna</h2>
+      <p>Più voci raccogliamo, più peso avrà la proposta che porteremo in Municipio. Fai girare il link nelle chat di quartiere, nei gruppi di genitori, ovunque qualcuno percorra la Colombo.</p>
+      <div class="share-buttons">
+        <a class="share-btn" id="share-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="share-btn" id="share-tg" href="#" target="_blank" rel="noopener">Telegram</a>
+        <a class="share-btn" id="share-fb" href="#" target="_blank" rel="noopener">Facebook</a>
+        <a class="share-btn" id="share-tw" href="#" target="_blank" rel="noopener">X / Twitter</a>
+        <button class="share-btn" id="share-copy" type="button">Copia link</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 · Nucleo Garbatella</span>
+    <span>
+      <a href="/index.html">Sito</a> ·
+      <a href="/privacy.html">Privacy</a> ·
+      <a href="/cookie.html">Cookie</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  const ENDPOINT = 'https://gn-garba-crm.vercel.app/api/public/campagne/colombo';
+  const MIN_PHONE_DIGITS = 9;
+  const PAGE_URL = 'https://nucleogarbatella.it/campagne/colombo';
+  const SHARE_TEXT = 'BASTA MORTI su via Cristoforo Colombo. 1.903 incidenti e 20 morti in dieci anni. Firma la proposta del Nucleo Garbatella.';
+
+  const form = document.getElementById('colombo-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const honeypot = document.getElementById('website-url');
+  const startTime = Date.now();
+
+  // ============ SHARE LINKS ============
+  const enc = encodeURIComponent;
+  document.getElementById('share-wa').href = `https://wa.me/?text=${enc(SHARE_TEXT + ' ' + PAGE_URL)}`;
+  document.getElementById('share-tg').href = `https://t.me/share/url?url=${enc(PAGE_URL)}&text=${enc(SHARE_TEXT)}`;
+  document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${enc(PAGE_URL)}`;
+  document.getElementById('share-tw').href = `https://twitter.com/intent/tweet?text=${enc(SHARE_TEXT)}&url=${enc(PAGE_URL)}`;
+
+  document.getElementById('share-copy').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(PAGE_URL);
+      const btn = document.getElementById('share-copy');
+      const original = btn.textContent;
+      btn.textContent = 'Link copiato ✓';
+      setTimeout(() => { btn.textContent = original; }, 2200);
+    } catch (e) {
+      window.prompt('Copia il link:', PAGE_URL);
+    }
+  });
+
+  // ============ CONTATORE TEXTAREA ============
+  const textarea = document.getElementById('proposta_libera');
+  const counter = document.getElementById('counter');
+  const counterNum = document.getElementById('counter-num');
+  textarea.addEventListener('input', () => {
+    const len = textarea.value.length;
+    counterNum.textContent = len;
+    counter.classList.toggle('near', len > 900);
+    updateSubmitState();
+  });
+
+  // ============ VALIDATION ============
+  function getErrorMessage(input) {
+    const v = input.validity;
+    if (v.valueMissing) return 'Campo obbligatorio.';
+    if (v.typeMismatch && input.type === 'email') return 'Email non valida.';
+    if (v.tooShort) return 'Troppo breve.';
+    if (v.tooLong) return 'Troppo lungo.';
+    return 'Valore non valido.';
+  }
+
+  function validateField(input) {
+    const errorEl = document.getElementById('err-' + input.name);
+    if (!input.checkValidity()) {
+      if (errorEl) { errorEl.textContent = getErrorMessage(input); errorEl.classList.add('show'); }
+      input.classList.add('invalid');
+      input.setAttribute('aria-invalid', 'true');
+      return false;
+    }
+    if (input.name === 'telefono') {
+      const digits = input.value.replace(/\D/g, '');
+      if (digits.length < MIN_PHONE_DIGITS) {
+        if (errorEl) { errorEl.textContent = 'Il numero deve contenere almeno ' + MIN_PHONE_DIGITS + ' cifre.'; errorEl.classList.add('show'); }
+        input.classList.add('invalid');
+        input.setAttribute('aria-invalid', 'true');
+        return false;
+      }
+    }
+    if (errorEl) { errorEl.classList.remove('show'); errorEl.textContent = ''; }
+    input.classList.remove('invalid');
+    input.removeAttribute('aria-invalid');
+    return true;
+  }
+
+  function getRadioValue(name) {
+    const checked = form.querySelector(`input[name="${name}"]:checked`);
+    return checked ? checked.value : '';
+  }
+
+  function isFormValid() {
+    // Required inputs (text)
+    const requireds = form.querySelectorAll('.form-input[required], .form-textarea[required]');
+    for (const input of requireds) {
+      if (!input.value.trim()) return false;
+      if (!input.checkValidity()) return false;
+    }
+    const tel = document.getElementById('telefono');
+    if (tel.value.replace(/\D/g, '').length < MIN_PHONE_DIGITS) return false;
+    // Radio
+    if (!getRadioValue('trattamento_sicurezza')) return false;
+    if (!getRadioValue('proposta_valida')) return false;
+    // Privacy
+    if (!document.getElementById('consenso_privacy').checked) return false;
+    return true;
+  }
+
+  function updateSubmitState() {
+    const ok = isFormValid();
+    submitBtn.disabled = !ok;
+    submitBtn.setAttribute('aria-disabled', String(!ok));
+  }
+
+  form.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => {
+      const errorEl = document.getElementById('err-' + input.name);
+      if (input.checkValidity() && errorEl && errorEl.classList.contains('show')) {
+        validateField(input);
+      }
+      updateSubmitState();
+    });
+  });
+  form.querySelectorAll('input[type="radio"]').forEach(r => {
+    r.addEventListener('change', updateSubmitState);
+  });
+  document.getElementById('consenso_privacy').addEventListener('change', updateSubmitState);
+
+  // ============ SUBMIT ============
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (honeypot.value.trim() !== '') {
+      window.location.href = '/campagne/colombo/grazie';
+      return;
+    }
+    if (Date.now() - startTime < 2000) {
+      window.location.href = '/campagne/colombo/grazie';
+      return;
+    }
+
+    let allOk = true;
+    form.querySelectorAll('.form-input[required], .form-textarea[required]').forEach(input => {
+      if (!validateField(input)) allOk = false;
+    });
+    if (!getRadioValue('trattamento_sicurezza')) {
+      const errEl = document.getElementById('err-trattamento_sicurezza');
+      if (errEl) { errEl.textContent = 'Scegli una risposta.'; errEl.classList.add('show'); }
+      allOk = false;
+    } else {
+      const errEl = document.getElementById('err-trattamento_sicurezza');
+      if (errEl) errEl.classList.remove('show');
+    }
+    if (!getRadioValue('proposta_valida')) {
+      const errEl = document.getElementById('err-proposta_valida');
+      if (errEl) { errEl.textContent = 'Scegli una risposta.'; errEl.classList.add('show'); }
+      allOk = false;
+    } else {
+      const errEl = document.getElementById('err-proposta_valida');
+      if (errEl) errEl.classList.remove('show');
+    }
+    if (!document.getElementById('consenso_privacy').checked) allOk = false;
+
+    if (!allOk) {
+      const firstInvalid = form.querySelector('.form-input.invalid, .form-textarea.invalid, .form-error.show');
+      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso...';
+
+    const payload = {
+      nome: form.nome.value.trim(),
+      cognome: form.cognome.value.trim(),
+      email: form.email.value.trim().toLowerCase(),
+      telefono: form.telefono.value.trim(),
+      residenza: form.residenza.value.trim(),
+      consenso_privacy: true,
+      fonte: 'form_online',
+      campagna: 'basta_morti_colombo',
+      risposte: {
+        trattamento_sicurezza: getRadioValue('trattamento_sicurezza'),
+        proposta_valida: getRadioValue('proposta_valida'),
+        proposta_libera: textarea.value.trim()
+      }
+    };
+
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (response.ok) {
+        window.location.href = '/campagne/colombo/grazie';
+        return;
+      }
+      throw new Error('HTTP ' + response.status);
+    } catch (err) {
+      console.error('[Colombo] Errore submit:', err);
+      const code = err.message || 'network';
+      alert('Si è verificato un errore, riprova o contattaci.\n\nCodice: ' + code);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Partecipa alla proposta';
+      updateSubmitState();
+    }
+  });
+
+  updateSubmitState();
+})();
+</script>
+
+</body>
+</html>

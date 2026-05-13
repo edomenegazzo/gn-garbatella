@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>Grazie · Basta morti su via Cristoforo Colombo</title>
+<meta name="description" content="Grazie per il tuo contributo alla campagna." />
+<meta name="theme-color" content="#0c0c0c" />
+<meta name="robots" content="noindex, nofollow" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  html { color-scheme: light; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background-color: #f4f1e8;
+    color: #0c0c0c;
+  }
+  body {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: inherit; }
+
+  main, .grazie-card { background-color: #f4f1e8; }
+  @media (prefers-color-scheme: dark) {
+    html, body, main, .grazie-card {
+      background-color: #f4f1e8 !important;
+      color: #0c0c0c !important;
+    }
+  }
+
+  .stripe { display: flex; height: 4px; }
+  .stripe .g { flex: 1; background: #006837; }
+  .stripe .w { flex: 1; background: #f4f1e8; }
+  .stripe .r { flex: 1; background: #cc1429; }
+
+  header.bar { background: #0c0c0c; }
+  .bar-inner {
+    display: flex; align-items: center;
+    height: 72px; padding: 0 24px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  @media (max-width: 720px) { .bar-inner { padding: 0 20px; height: 64px; } }
+  .bar-brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; color: #f4f1e8;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800; font-size: 17px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .bar-logo { height: 44px; width: auto; flex-shrink: 0; display: block; }
+  @media (max-width: 720px) {
+    .bar-brand { font-size: 15px; gap: 10px; }
+    .bar-logo { height: 36px; }
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+  }
+  .grazie-card {
+    max-width: 620px;
+    width: 100%;
+  }
+  .grazie-mark {
+    width: 64px;
+    height: 64px;
+    border: 3px solid #cc1429;
+    border-radius: 50%;
+    margin: 0 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-size: 36px;
+    color: #cc1429;
+    line-height: 1;
+  }
+  .eyebrow {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #cc1429;
+    margin: 0 0 16px;
+  }
+  h1 {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 8vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    color: #0c0c0c;
+    margin: 0 0 22px;
+  }
+  .message {
+    font-size: 17.5px;
+    line-height: 1.6;
+    color: #2a2a2a;
+    margin: 0 0 32px;
+    max-width: 52ch;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #cc1429;
+    color: #fff;
+    border: 2px solid #cc1429;
+    padding: 15px 26px;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.15s ease;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .btn:hover, .btn:active {
+    background: #a40f20;
+    border-color: #a40f20;
+  }
+  .btn--ghost {
+    background: transparent;
+    color: #0c0c0c;
+    border-color: #0c0c0c;
+  }
+  .btn--ghost:hover {
+    background: #0c0c0c;
+    color: #f4f1e8;
+    border-color: #0c0c0c;
+  }
+  .btn:focus-visible {
+    outline: 3px solid #ff5a6e;
+    outline-offset: 2px;
+  }
+
+  .share-note {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(12,12,12,0.12);
+    font-size: 14px;
+    color: #6a6a6a;
+    line-height: 1.5;
+  }
+  .share-note strong { color: #0c0c0c; font-weight: 600; }
+
+  footer {
+    background: #0c0c0c;
+    color: rgba(244,241,232,0.55);
+    padding: 22px 0;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    font-size: 12.5px;
+    text-align: center;
+  }
+  footer a { color: rgba(244,241,232,0.75); text-decoration: underline; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<div class="stripe" aria-hidden="true">
+  <span class="g"></span><span class="w"></span><span class="r"></span>
+</div>
+
+<header class="bar">
+  <div class="bar-inner">
+    <a class="bar-brand" href="/index.html">
+      <img class="bar-logo" src="/logo.svg" alt="" aria-hidden="true" />
+      Nucleo Garbatella
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="grazie-card">
+    <div class="grazie-mark" aria-hidden="true">✓</div>
+    <p class="eyebrow">Adesione registrata</p>
+    <h1>Grazie per il tuo contributo.</h1>
+    <p class="message">La tua proposta sarà presa in considerazione nella stesura del progetto che porteremo all'attenzione dell'amministrazione municipale. Continuiamo a raccogliere voci: più siamo, più peso avrà la richiesta.</p>
+
+    <div class="actions">
+      <a class="btn" id="share-wa" href="#" target="_blank" rel="noopener">Condividi su WhatsApp</a>
+      <a class="btn btn--ghost" href="/campagne/colombo">Torna alla campagna</a>
+    </div>
+
+    <p class="share-note">
+      <strong>Aiutaci a diffondere la campagna.</strong> Mandala nelle chat di quartiere, nei gruppi di genitori, a chiunque percorra la Colombo ogni giorno. Una voce in più conta.
+    </p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    © 2026 · Nucleo Garbatella · <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+
+<script>
+  const PAGE_URL = 'https://nucleogarbatella.it/campagne/colombo';
+  const SHARE_TEXT = 'BASTA MORTI su via Cristoforo Colombo. 1.903 incidenti e 20 morti in dieci anni. Firma la proposta del Nucleo Garbatella.';
+  document.getElementById('share-wa').href =
+    'https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + ' ' + PAGE_URL);
+</script>
+
+</body>
+</html>
