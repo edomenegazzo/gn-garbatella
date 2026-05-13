@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="color-scheme" content="light" />
+<meta name="color-scheme" content="only light" />
 <title>Basta morti su via Cristoforo Colombo · Nucleo Garbatella</title>
 <meta name="description" content="Via Cristoforo Colombo: 1.903 incidenti e 20 morti in dieci anni. Firma la proposta del Nucleo Garbatella per una strada più sicura." />
 <meta name="theme-color" content="#0c0c0c" />
@@ -36,7 +36,7 @@ e cambia twitter:card a summary_large_image -->
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
 <style>
-  html { color-scheme: light; }
+  html { color-scheme: only light; }
 
   *, *::before, *::after { box-sizing: border-box; }
   html, body {
@@ -53,58 +53,6 @@ e cambia twitter:card a summary_large_image -->
   a { color: inherit; }
 
   main, section, .container, form { background-color: #f4f1e8; }
-  /* Sezioni intenzionalmente scure: override esplicito */
-  .hero { background-color: #0c0c0c; }
-  .share { background-color: #0c0c0c; }
-
-  @media (prefers-color-scheme: dark) {
-    html, body, main, .container, form,
-    .stats, .manifesto, .form-section {
-      background-color: #f4f1e8 !important;
-      color: #0c0c0c !important;
-    }
-    /* Sezioni scure restano scure anche in dark mode */
-    .hero, .share, .manifesto-claim {
-      background-color: #0c0c0c !important;
-    }
-    .hero h1, .hero h2, .hero-eyebrow, .hero-tagline,
-    .share h2, .share p, .share-btn,
-    .manifesto-claim p {
-      color: inherit !important;
-    }
-    .hero h1 { color: #f4f1e8 !important; }
-    .hero h2 { color: rgba(244,241,232,0.75) !important; }
-    .hero-eyebrow { color: #ff5a6e !important; }
-    .hero-tagline { color: rgba(244,241,232,0.85) !important; }
-    .share h2 { color: #f4f1e8 !important; }
-    .share p { color: rgba(244,241,232,0.75) !important; }
-    .share-btn { color: #f4f1e8 !important; }
-    .manifesto-claim p { color: #f4f1e8 !important; }
-    .manifesto-claim p:last-child { color: #ff5a6e !important; }
-
-    /* Form: input bianchi su sezione cream */
-    .form-input, .form-textarea {
-      background-color: #ffffff !important;
-      color: #0c0c0c !important;
-    }
-    .form-radio {
-      background-color: #ffffff !important;
-    }
-    .form-radio:has(input:checked) {
-      background-color: #fef6f6 !important;
-    }
-    .form-label, .form-help, .form-checkbox, .form-question-label,
-    .form-block-title, .form-section h2, .form-section .lead,
-    .stat-number, .stat-label,
-    .manifesto p, .manifesto-eyebrow, .manifesto-cta p {
-      color: #0c0c0c !important;
-    }
-    .manifesto p { color: #2a2a2a !important; }
-    .manifesto-eyebrow { color: #cc1429 !important; }
-    .stat-number--accent { color: #cc1429 !important; }
-    .stat-label, .form-help { color: #6a6a6a !important; }
-    .form-block-title { color: #cc1429 !important; }
-  }
 
   /* Tricolore */
   .stripe { display: flex; height: 4px; }
@@ -113,7 +61,11 @@ e cambia twitter:card a summary_large_image -->
   .stripe .r { flex: 1; background: #cc1429; }
 
   /* Header */
-  header.bar { background: #0c0c0c; position: sticky; top: 0; z-index: 50; }
+  header.bar {
+    background-color: #0c0c0c;
+    background-image: linear-gradient(#0c0c0c, #0c0c0c);
+    position: sticky; top: 0; z-index: 50;
+  }
   .bar-inner {
     display: flex; justify-content: space-between; align-items: center;
     height: 72px; padding: 0 24px;
@@ -140,7 +92,8 @@ e cambia twitter:card a summary_large_image -->
 
   /* ============ HERO ============ */
   .hero {
-    background: #0c0c0c;
+    background-color: #0c0c0c;
+    background-image: linear-gradient(#0c0c0c, #0c0c0c);
     color: #f4f1e8;
     padding: 72px 0 64px;
     position: relative;
@@ -290,7 +243,8 @@ e cambia twitter:card a summary_large_image -->
   }
 
   .manifesto-claim {
-    background: #0c0c0c;
+    background-color: #0c0c0c;
+    background-image: linear-gradient(#0c0c0c, #0c0c0c);
     color: #f4f1e8;
     padding: 36px 32px;
     margin: 40px 0;
@@ -569,7 +523,8 @@ e cambia twitter:card a summary_large_image -->
 
   /* ============ SHARE ============ */
   .share {
-    background: #0c0c0c;
+    background-color: #0c0c0c;
+    background-image: linear-gradient(#0c0c0c, #0c0c0c);
     color: #f4f1e8;
     padding: 56px 0;
   }
@@ -618,7 +573,8 @@ e cambia twitter:card a summary_large_image -->
 
   /* Footer */
   footer {
-    background: #0c0c0c;
+    background-color: #0c0c0c;
+    background-image: linear-gradient(#0c0c0c, #0c0c0c);
     color: rgba(244,241,232,0.55);
     padding: 24px 0;
     border-top: 1px solid rgba(244,241,232,0.08);
