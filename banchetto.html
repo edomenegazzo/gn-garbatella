@@ -197,6 +197,32 @@
     .date-selects { grid-template-columns: 1fr; gap: 6px; }
   }
 
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    font-size: 14px;
+    color: #2a2a2a;
+    cursor: pointer;
+    line-height: 1.4;
+    user-select: none;
+  }
+  .toggle-row input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #cc1429;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .date-extra {
+    display: none;
+    margin-top: 12px;
+  }
+  .date-extra.show {
+    display: block;
+  }
+
   .form-help {
     font-size: 12px;
     color: #6a6a6a;
@@ -401,52 +427,76 @@
 
           <div class="form-row">
             <div class="form-field full">
-              <label class="form-label">Data di nascita<span class="req" aria-hidden="true">*</span></label>
-              <div class="date-selects">
-                <select class="form-select" id="data_giorno" required aria-label="Giorno">
-                  <option value="">Giorno</option>
-                </select>
-                <select class="form-select" id="data_mese" required aria-label="Mese">
-                  <option value="">Mese</option>
-                  <option value="01">Gennaio</option>
-                  <option value="02">Febbraio</option>
-                  <option value="03">Marzo</option>
-                  <option value="04">Aprile</option>
-                  <option value="05">Maggio</option>
-                  <option value="06">Giugno</option>
-                  <option value="07">Luglio</option>
-                  <option value="08">Agosto</option>
-                  <option value="09">Settembre</option>
-                  <option value="10">Ottobre</option>
-                  <option value="11">Novembre</option>
-                  <option value="12">Dicembre</option>
-                </select>
-                <select class="form-select" id="data_anno" required aria-label="Anno">
-                  <option value="">Anno</option>
-                </select>
+              <label class="form-label" for="data_anno">Anno di nascita<span class="req" aria-hidden="true">*</span></label>
+              <select class="form-select" id="data_anno" required aria-required="true" aria-label="Anno di nascita">
+                <option value="">Seleziona…</option>
+              </select>
+              <span class="form-error" id="err-data_anno"></span>
+              <span class="form-help">Devi avere almeno 14 anni.</span>
+
+              <label class="toggle-row">
+                <input type="checkbox" id="toggle-mese-giorno" />
+                <span>Vuoi specificare anche mese e giorno?</span>
+              </label>
+
+              <div class="date-extra" id="date-extra" aria-hidden="true">
+                <div class="date-selects" style="grid-template-columns: 1fr 1.6fr;">
+                  <select class="form-select" id="data_giorno" aria-label="Giorno">
+                    <option value="">Giorno</option>
+                  </select>
+                  <select class="form-select" id="data_mese" aria-label="Mese">
+                    <option value="">Mese</option>
+                    <option value="01">Gennaio</option>
+                    <option value="02">Febbraio</option>
+                    <option value="03">Marzo</option>
+                    <option value="04">Aprile</option>
+                    <option value="05">Maggio</option>
+                    <option value="06">Giugno</option>
+                    <option value="07">Luglio</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Settembre</option>
+                    <option value="10">Ottobre</option>
+                    <option value="11">Novembre</option>
+                    <option value="12">Dicembre</option>
+                  </select>
+                </div>
               </div>
               <input type="hidden" id="data_nascita" name="data_nascita" />
-              <span class="form-error" id="err-data_nascita"></span>
-              <span class="form-help">Devi avere almeno 14 anni.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field full">
+              <label class="form-label" for="municipio">Municipio<span class="req" aria-hidden="true">*</span></label>
+              <select class="form-select" id="municipio" name="municipio" required aria-required="true">
+                <option value="">Seleziona…</option>
+                <option value="municipio_viii">Municipio VIII</option>
+                <option value="municipio_ix">Municipio IX</option>
+                <option value="municipio_x">Municipio X</option>
+                <option value="altri_municipi_roma">Altri municipi di Roma</option>
+                <option value="altri_comuni_lazio">Altri comuni del Lazio</option>
+                <option value="resto_italia">Resto d'Italia</option>
+              </select>
+              <span class="form-error" id="err-municipio"></span>
             </div>
           </div>
 
           <div class="form-row" style="grid-template-columns: 3fr 1fr;">
             <div class="form-field">
-              <label class="form-label" for="indirizzo_via">Via / Piazza<span class="req" aria-hidden="true">*</span></label>
+              <label class="form-label" for="indirizzo_via">Via / Piazza</label>
               <input class="form-input" type="text" id="indirizzo_via" name="indirizzo_via"
-                     required maxlength="120"
+                     maxlength="120"
                      autocomplete="address-line1" autocapitalize="words"
-                     enterkeyhint="next" aria-required="true"
+                     enterkeyhint="next"
                      placeholder="es. Via G. Pascoli" />
               <span class="form-error" id="err-indirizzo_via"></span>
             </div>
             <div class="form-field">
-              <label class="form-label" for="indirizzo_civico">Civico<span class="req" aria-hidden="true">*</span></label>
+              <label class="form-label" for="indirizzo_civico">Civico</label>
               <input class="form-input" type="text" id="indirizzo_civico" name="indirizzo_civico"
-                     required maxlength="10"
+                     maxlength="10"
                      autocomplete="address-line2"
-                     enterkeyhint="next" aria-required="true"
+                     enterkeyhint="next"
                      placeholder="24/B" />
               <span class="form-error" id="err-indirizzo_civico"></span>
             </div>
@@ -454,21 +504,21 @@
 
           <div class="form-row" style="grid-template-columns: 1fr 2fr;">
             <div class="form-field">
-              <label class="form-label" for="cap">CAP<span class="req" aria-hidden="true">*</span></label>
+              <label class="form-label" for="cap">CAP</label>
               <input class="form-input" type="text" id="cap" name="cap"
-                     required minlength="5" maxlength="5" pattern="\d{5}"
+                     maxlength="5" pattern="\d{5}"
                      inputmode="numeric"
                      autocomplete="postal-code"
-                     enterkeyhint="next" aria-required="true"
+                     enterkeyhint="next"
                      placeholder="00154" />
               <span class="form-error" id="err-cap"></span>
             </div>
             <div class="form-field">
-              <label class="form-label" for="comune">Comune<span class="req" aria-hidden="true">*</span></label>
+              <label class="form-label" for="comune">Comune</label>
               <input class="form-input" type="text" id="comune" name="comune"
-                     required maxlength="80"
+                     maxlength="80"
                      autocomplete="address-level2" autocapitalize="words"
-                     enterkeyhint="next" aria-required="true"
+                     enterkeyhint="next"
                      placeholder="Roma" />
               <span class="form-error" id="err-comune"></span>
             </div>
@@ -520,15 +570,18 @@
   const startTime = Date.now();
 
   // ============ DATE SELECTS ============
+  // Anno obbligatorio, mese + giorno facoltativi (toggle)
   const dGiorno = document.getElementById('data_giorno');
   const dMese = document.getElementById('data_mese');
   const dAnno = document.getElementById('data_anno');
   const dHidden = document.getElementById('data_nascita');
+  const toggleMG = document.getElementById('toggle-mese-giorno');
+  const dateExtra = document.getElementById('date-extra');
 
   function popolaAnni() {
     const annoOggi = new Date().getFullYear();
-    const annoMax = annoOggi - MIN_AGE;
-    const annoMin = 1900;
+    const annoMax = annoOggi - MIN_AGE;  // banchetto: età minima 14
+    const annoMin = 1926;
     for (let y = annoMax; y >= annoMin; y--) {
       const o = document.createElement('option');
       o.value = y;
@@ -559,6 +612,7 @@
   }
 
   function aggiornaDataNascita() {
+    // data_nascita completa solo se anno + mese + giorno tutti compilati
     if (dGiorno.value && dMese.value && dAnno.value) {
       const gg = String(dGiorno.value).padStart(2, '0');
       dHidden.value = dAnno.value + '-' + dMese.value + '-' + gg;
@@ -571,8 +625,27 @@
   popolaAnni();
   popolaGiorni();
   dMese.addEventListener('change', () => { popolaGiorni(); aggiornaDataNascita(); });
-  dAnno.addEventListener('change', () => { popolaGiorni(); aggiornaDataNascita(); });
+  dAnno.addEventListener('change', () => {
+    popolaGiorni();
+    aggiornaDataNascita();
+    const errEl = document.getElementById('err-data_anno');
+    if (errEl && dAnno.value) errEl.classList.remove('show');
+    dAnno.classList.remove('invalid');
+  });
   dGiorno.addEventListener('change', aggiornaDataNascita);
+
+  toggleMG.addEventListener('change', (e) => {
+    const show = e.target.checked;
+    dateExtra.classList.toggle('show', show);
+    dateExtra.setAttribute('aria-hidden', String(!show));
+    if (!show) {
+      // se l'utente disattiva il toggle, ripuliamo i campi mese/giorno e aggiorniamo il payload
+      dGiorno.value = '';
+      dMese.value = '';
+      popolaGiorni();
+    }
+    aggiornaDataNascita();
+  });
 
   // ============ VALIDATION ============
   function getErrorMessage(input) {
@@ -612,17 +685,20 @@
     return true;
   }
 
-  function validateDate() {
-    const errorEl = document.getElementById('err-data_nascita');
-    if (!dGiorno.value || !dMese.value || !dAnno.value) {
-      if (errorEl) { errorEl.textContent = 'Seleziona giorno, mese e anno.'; errorEl.classList.add('show'); }
+  function validateAnnoNascita() {
+    const errorEl = document.getElementById('err-data_anno');
+    if (!dAnno.value) {
+      if (errorEl) { errorEl.textContent = 'Seleziona l\'anno di nascita.'; errorEl.classList.add('show'); }
+      dAnno.classList.add('invalid');
       return false;
     }
     if (errorEl) { errorEl.classList.remove('show'); errorEl.textContent = ''; }
+    dAnno.classList.remove('invalid');
     return true;
   }
 
   function isFormValid() {
+    // Nome, cognome, email, telefono restano required (HTML5)
     const requireds = form.querySelectorAll('.form-input[required]');
     for (const input of requireds) {
       if (!input.value.trim()) return false;
@@ -630,7 +706,11 @@
     }
     const tel = document.getElementById('telefono');
     if (tel.value.replace(/\D/g, '').length < MIN_PHONE_DIGITS) return false;
-    if (!dGiorno.value || !dMese.value || !dAnno.value) return false;
+    // Anno di nascita obbligatorio (mese e giorno facoltativi)
+    if (!dAnno.value) return false;
+    // Municipio obbligatorio
+    if (!document.getElementById('municipio').value) return false;
+    // Privacy
     if (!document.getElementById('consenso_privacy').checked) return false;
     return true;
   }
@@ -653,6 +733,11 @@
   });
   document.getElementById('consenso_privacy').addEventListener('change', updateSubmitState);
   document.getElementById('consenso_newsletter').addEventListener('change', updateSubmitState);
+  document.getElementById('municipio').addEventListener('change', () => {
+    const errEl = document.getElementById('err-municipio');
+    if (errEl) errEl.classList.remove('show');
+    updateSubmitState();
+  });
 
   // ============ SUBMIT ============
   form.addEventListener('submit', async (e) => {
@@ -671,7 +756,13 @@
     form.querySelectorAll('.form-input[required]').forEach(input => {
       if (!validateField(input)) allOk = false;
     });
-    if (!validateDate()) allOk = false;
+    if (!validateAnnoNascita()) allOk = false;
+    if (!document.getElementById('municipio').value) {
+      const errEl = document.getElementById('err-municipio');
+      if (errEl) { errEl.textContent = 'Seleziona un\'opzione.'; errEl.classList.add('show'); }
+      document.getElementById('municipio').classList.add('invalid');
+      allOk = false;
+    }
     if (!document.getElementById('consenso_privacy').checked) allOk = false;
 
     if (!allOk) {
@@ -688,7 +779,9 @@
       cognome: form.cognome.value.trim(),
       email: form.email.value.trim().toLowerCase(),
       telefono: form.telefono.value.trim(),
-      data_nascita: dHidden.value,
+      anno_nascita: parseInt(dAnno.value, 10),
+      data_nascita: dHidden.value || null,
+      municipio: form.municipio.value,
       indirizzo_via: form.indirizzo_via.value.trim(),
       indirizzo_civico: form.indirizzo_civico.value.trim(),
       cap: form.cap.value.trim(),
