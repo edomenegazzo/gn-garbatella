@@ -260,6 +260,14 @@
     pointer-events: none;
   }
 
+  /* Nasconde i controlli nativi iOS Safari quando autoplay viene bloccato */
+  .hero-video::-webkit-media-controls,
+  .hero-video::-webkit-media-controls-start-playback-button,
+  .hero-video::-webkit-media-controls-panel {
+    display: none !important;
+    -webkit-appearance: none !important;
+  }
+
   /* Overlay scuro sopra al video per leggibilità del testo */
   .home-hero::after {
     content: "";
@@ -1634,8 +1642,11 @@
       muted
       loop
       playsinline
+      webkit-playsinline="true"
       preload="auto"
       poster="/video/hero-poster.jpg"
+      disablepictureinpicture
+      disableremoteplayback
       aria-hidden="true">
       <source src="/video/hero.mp4" type="video/mp4">
     </video>
@@ -1771,6 +1782,35 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu.getAttribute('aria-hidden') === 'false') closeMenu();
   });
+</script>
+
+<script>
+  // Forza autoplay del video hero anche quando Safari iOS lo blocca
+  (function() {
+    var v = document.querySelector('.hero-video');
+    if (!v) return;
+
+    function tryPlay() {
+      var p = v.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function() { /* autoplay bloccato, resta visibile il poster */ });
+      }
+    }
+
+    // Prova subito al caricamento
+    tryPlay();
+
+    // Riprova quando l'utente torna sulla tab (cambio scheda, sblocco schermo)
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden && v.paused) tryPlay();
+    });
+
+    // Sblocco definitivo: al primo gesto utente (touchstart/click/scroll) il browser
+    // autorizza il play. Una volta che riesce, l'event listener si rimuove (once: true).
+    ['touchstart', 'click', 'scroll'].forEach(function(evt) {
+      document.addEventListener(evt, tryPlay, { once: true, passive: true });
+    });
+  })();
 </script>
 
 
