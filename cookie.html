@@ -1503,6 +1503,11 @@
   .footer-inner a { color: rgba(244,241,232,0.7); text-decoration: none; }
   .footer-inner a:hover { color: #fff; }
   .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .footer-copy-mobile { display: none; }
+  @media (max-width: 720px) {
+    .footer-copy-desktop { display: none; }
+    .footer-copy-mobile { display: inline; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .menu, .hamburger-icon span { transition: none; }
@@ -1628,9 +1633,11 @@
 
 <footer>
   <div class="container footer-inner">
-    <div>© 2026 · Nucleo Garbatella · Roma · Municipi VIII–IX–X</div>
+    <div>
+      <span class="footer-copy-desktop">© 2026 · Nucleo Garbatella · Roma · Municipi VIII–IX–X</span>
+      <span class="footer-copy-mobile">© 2026 Nucleo Garbatella<br />Roma · Municipi VIII–IX–X</span>
+    </div>
     <div class="footer-links">
-      <a href="https://www.instagram.com/gngarbatella/" target="_blank" rel="noopener">@gngarbatella</a>
       <a href="privacy.html">Privacy</a>
       <a href="cookie.html">Cookie</a>
       <a href="https://www.gioventunazionale.it/" target="_blank" rel="noopener">GN</a>
