@@ -1684,26 +1684,6 @@
   </section>
 
   <!-- ===== INSTAGRAM FEED PREVIEW ===== -->
-  <!--
-    Quando vuoi mostrare il feed reale di @gngarbatella:
-
-    SERVIZIO CONSIGLIATO: Behold (behold.so)
-    Perché Behold:
-      - Non installa cookie né tracker → cookie policy resta com'è, niente banner consenso
-      - Embed in JavaScript (non iframe) → si stila col CSS del sito
-      - Free plan: 1200 view/mese, max 6 immagini (sufficiente per partire)
-      - Setup ~5 minuti, GDPR-compliant out of the box, WCAG accessibile
-
-    PASSAGGI:
-      1. Account @gngarbatella deve essere Business Account (impostazione gratuita su IG).
-      2. Vai su behold.so, sign up, "Add source" → autorizza Instagram.
-      3. Crea un feed grid 3-colonne, copia lo snippet JS (script + div).
-      4. Sostituisci il blocco <div class="insta-grid">...</div> qui sotto col div di Behold.
-      5. Aggiungi lo <script> di Behold prima del </body> (vicino agli altri script).
-
-    Alternative se servissero più view o più feed: SnapWidget o LightWidget — entrambi però installano cookie
-    propri e richiedono di aggiornare la cookie policy.
-  -->
   <section class="insta-section">
     <div class="container">
       <div class="insta-head">
@@ -1719,15 +1699,9 @@
         </div>
       </div>
 
-      <div class="insta-grid" aria-label="Anteprima feed Instagram">
-        <a class="insta-tile" href="https://www.instagram.com/gngarbatella/" target="_blank" rel="noopener" aria-label="Vai al profilo Instagram"><span class="insta-tile-num">01</span></a>
-        <a class="insta-tile" href="https://www.instagram.com/gngarbatella/" target="_blank" rel="noopener" aria-label="Vai al profilo Instagram"><span class="insta-tile-num">02</span></a>
-        <a class="insta-tile" href="https://www.instagram.com/gngarbatella/" target="_blank" rel="noopener" aria-label="Vai al profilo Instagram"><span class="insta-tile-num">03</span></a>
+      <div class="insta-grid-wrap">
+        <behold-widget feed-id="Lzn5BSCh2ZY8jrPIS9d3"></behold-widget>
       </div>
-
-      <p class="insta-footnote">
-        L'anteprima qui sopra è uno scaffold. Per collegare il feed reale a @gngarbatella, integra un widget (es. SnapWidget, LightWidget o Behold) sostituendo la griglia con l'iframe fornito dal servizio.
-      </p>
     </div>
   </section>
 
@@ -1813,6 +1787,15 @@
   })();
 </script>
 
+<script>
+  // Carica il widget Behold per il feed Instagram in homepage
+  (() => {
+    const d = document, s = d.createElement("script");
+    s.type = "module";
+    s.src = "https://w.behold.so/widget.js";
+    d.head.append(s);
+  })();
+</script>
 
 </body>
 </html>
