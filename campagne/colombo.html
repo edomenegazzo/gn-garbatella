@@ -661,6 +661,28 @@ e cambia twitter:card a summary_large_image -->
 </head>
 <body>
 
+<header class="bar" id="nav-bar-internal" style="display: none;">
+  <div class="bar-inner">
+    <a class="bar-brand" href="/index.html">
+      <img class="bar-logo" src="/logo.svg" alt="" aria-hidden="true" />
+      Nucleo Garbatella
+    </a>
+  </div>
+</header>
+<script>
+  // Mostra la navbar SOLO se l'utente arriva dal sito del Nucleo Garbatella.
+  // Chi atterra da social/WhatsApp/link diretti vede la pagina neutra.
+  (function() {
+    var ref = document.referrer || '';
+    if (ref.indexOf('gn-garbatella.vercel.app') !== -1 ||
+        ref.indexOf('nucleogarbatella.it') !== -1 ||
+        ref.indexOf('localhost') !== -1) {
+      var bar = document.getElementById('nav-bar-internal');
+      if (bar) bar.style.display = '';
+    }
+  })();
+</script>
+
 <main>
 
   <!-- HERO -->

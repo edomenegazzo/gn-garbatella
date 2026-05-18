@@ -391,9 +391,10 @@
 
   .cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     border-top: 2px solid #f4f1e8;
   }
+  @media (max-width: 960px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 720px) { .cards-grid { grid-template-columns: 1fr; } }
 
   .card {
@@ -405,6 +406,10 @@
     border-right: 1px solid rgba(244,241,232,0.2);
   }
   .card:last-child { border-right: none; }
+  @media (max-width: 960px) and (min-width: 721px) {
+    .card:nth-child(2n) { border-right: none; }
+    .card:nth-last-child(-n+2) { border-bottom: none; }
+  }
   @media (max-width: 720px) {
     .card { padding: 28px 0; border-right: none; }
     .card:last-child { border-bottom: none; }
@@ -1617,6 +1622,7 @@
     <a class="menu-link" href="manifesto.html">Manifesto</a>
     <a class="menu-link" href="chi-siamo.html">Chi siamo</a>
     <a class="menu-link" href="blog.html">Blog</a>
+    <a class="menu-link" href="/campagne/colombo">Petizioni</a>
     <a class="menu-link" href="banchetto.html">Scrivici</a>
   </div>
 
@@ -1674,6 +1680,10 @@
         <a class="card" href="chi-siamo.html">
           <h3 class="card-title">Chi siamo <span class="arrow" aria-hidden="true">→</span></h3>
           <p class="card-desc">Chi siamo, da dove veniamo, cosa facciamo nel quartiere.</p>
+        </a>
+        <a class="card" href="/campagne/colombo">
+          <h3 class="card-title">Petizioni <span class="arrow" aria-hidden="true">→</span></h3>
+          <p class="card-desc">Le campagne del nucleo. Firma e fai sentire la tua voce.</p>
         </a>
         <a class="card" href="blog.html">
           <h3 class="card-title">Blog <span class="arrow" aria-hidden="true">→</span></h3>
