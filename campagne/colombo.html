@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="only light" />
 <title>Basta morti su via Cristoforo Colombo · Nucleo Garbatella</title>
-<meta name="description" content="Via Cristoforo Colombo: 1.903 incidenti e 20 morti in dieci anni. Firma la proposta del Nucleo Garbatella per una strada più sicura." />
+<meta name="description" content="Via Cristoforo Colombo: 1.903 incidenti e 20 morti in dieci anni. Sottoscrivi la proposta del Nucleo Garbatella per una strada più sicura." />
 <meta name="theme-color" content="#0c0c0c" />
 <link rel="canonical" href="https://nucleogarbatella.it/campagne/colombo" />
 
@@ -20,7 +20,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="BASTA MORTI SU VIA CRISTOFORO COLOMBO" />
-<meta name="twitter:description" content="1.903 incidenti e 20 morti in dieci anni. Firma la proposta." />
+<meta name="twitter:description" content="1.903 incidenti e 20 morti in dieci anni. Sottoscrivi la proposta." />
 
 <!-- TODO: quando avrai un'immagine 1200x630 per la campagna, decommenta queste righe:
 <meta property="og:image" content="https://nucleogarbatella.it/og/campagna-colombo.jpg" />
@@ -458,6 +458,12 @@ e cambia twitter:card a summary_large_image -->
     line-height: 1.4;
   }
   .form-question-label .req { color: #cc1429; margin-left: 3px; }
+  .form-optional {
+    font-weight: 400;
+    font-size: 0.85em;
+    opacity: 0.65;
+    margin-left: 4px;
+  }
 
   .form-radio-group {
     display: flex;
@@ -700,7 +706,7 @@ e cambia twitter:card a summary_large_image -->
       <h2>su via Cristoforo Colombo</h2>
       <p class="hero-tagline">Una strada di 27 chilometri, vent'anni di vittime, una città che non interviene. Costruiamo insieme una proposta da portare in Municipio.</p>
       <div class="hero-cta-row">
-        <a href="#firma" class="hero-cta">Firma la proposta →</a>
+        <a href="#firma" class="hero-cta">Sottoscrivi la proposta →</a>
       </div>
     </div>
   </section>
@@ -732,8 +738,6 @@ e cambia twitter:card a summary_large_image -->
   <!-- MANIFESTO -->
   <section class="manifesto">
     <div class="container container--narrow">
-      <p class="manifesto-eyebrow">Il manifesto della campagna</p>
-
       <p>Via Cristoforo Colombo è la strada urbana più grande d'Italia. Con i suoi 27 chilometri di lunghezza, presenta sempre — e da sempre — il suo conto: <strong>1.903 incidenti e 20 morti tra il 2014 e il 2024</strong>. Oltre 190 sinistri e due decessi all'anno, una media rispettata con puntualità da brividi anche nel 2025 e in via di definizione sugli stessi parametri per l'anno in corso.</p>
 
       <div class="manifesto-claim">
@@ -756,7 +760,7 @@ e cambia twitter:card a summary_large_image -->
   <!-- FORM -->
   <section class="form-section" id="firma">
     <div class="container container--narrow">
-      <h2>Firma la proposta</h2>
+      <h2>Sottoscrivi la proposta</h2>
       <p class="lead">Lasciaci i tuoi dati e le tue idee. Costruiamo insieme un progetto da portare in Municipio.</p>
 
       <form id="colombo-form" novalidate>
@@ -872,7 +876,6 @@ e cambia twitter:card a summary_large_image -->
 
         <!-- DOMANDE -->
         <div class="form-block">
-          <p class="form-block-title">Le domande della campagna</p>
 
           <div class="form-question">
             <span class="form-question-label">
@@ -918,11 +921,11 @@ e cambia twitter:card a summary_large_image -->
 
           <div class="form-question">
             <label class="form-question-label" for="proposta_libera">
-              3. Scrivici la tua proposta, per migliorare la sicurezza stradale della Colombo<span class="req" aria-hidden="true">*</span>
+              3. Scrivici la tua proposta, per migliorare la sicurezza stradale della Colombo <span class="form-optional">(facoltativo)</span>
             </label>
             <textarea class="form-textarea" id="proposta_libera" name="proposta_libera"
-                      required maxlength="1000" minlength="3"
-                      rows="6" aria-required="true"
+                      maxlength="1000"
+                      rows="6"
                       placeholder="La tua idea, il tuo punto di vista, una soluzione che vorresti vedere realizzata..."></textarea>
             <div class="counter" id="counter"><span id="counter-num">0</span> / 1000</div>
             <span class="form-error" id="err-proposta_libera"></span>
@@ -933,6 +936,10 @@ e cambia twitter:card a summary_large_image -->
         <label class="form-checkbox">
           <input type="checkbox" id="consenso_privacy" name="consenso_privacy" required />
           <span>Dichiaro di aver letto e compreso l'<a href="/privacy.html" target="_blank" rel="noopener">Informativa sul trattamento dei dati personali</a> e acconsento al trattamento dei miei dati personali per le finalità ivi indicate.<span class="req" aria-hidden="true">*</span></span>
+        </label>
+        <label class="form-checkbox">
+          <input type="checkbox" id="consenso_ricontatto" name="consenso_ricontatto" />
+          <span>Acconsento ad essere ricontattato dal Nucleo Garbatella per aggiornamenti sulla campagna e per attività future.</span>
         </label>
 
         <div class="form-submit-row">
@@ -980,7 +987,7 @@ e cambia twitter:card a summary_large_image -->
   const ENDPOINT = 'https://gn-garba-crm.vercel.app/api/public/campagne/colombo';
   const MIN_PHONE_DIGITS = 9;
   const PAGE_URL = 'https://nucleogarbatella.it/campagne/colombo';
-  const SHARE_TEXT = 'BASTA MORTI su via Cristoforo Colombo. 1.903 incidenti e 20 morti in dieci anni. Firma la proposta del Nucleo Garbatella.';
+  const SHARE_TEXT = 'BASTA MORTI su via Cristoforo Colombo. 1.903 incidenti e 20 morti in dieci anni. Sottoscrivi la proposta del Nucleo Garbatella.';
 
   const form = document.getElementById('colombo-form');
   const submitBtn = document.getElementById('submit-btn');
@@ -1287,6 +1294,7 @@ e cambia twitter:card a summary_large_image -->
       data_nascita: dHidden.value || null,
       municipio: form.municipio.value,
       consenso_privacy: true,
+      consenso_ricontatto: document.getElementById('consenso_ricontatto').checked,
       risposte: {
         trattamento_sicurezza: getRadioValue('trattamento_sicurezza'),
         proposta_valida: getRadioValue('proposta_valida'),
