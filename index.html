@@ -1652,7 +1652,7 @@
       disablepictureinpicture
       disableremoteplayback
       aria-hidden="true">
-      <source src="/video/hero.mp4" type="video/mp4">
+      <!-- <source> inserito dinamicamente dallo script in fondo per randomizzazione tra 3 video -->
     </video>
 
     <div class="hero-inner">
@@ -1767,11 +1767,28 @@
 </script>
 
 <script>
-  // Forza autoplay del video hero anche quando Safari iOS lo blocca
+  // Hero video: sceglie random uno dei 3 video disponibili + autoplay robusto
+  // anche quando Safari iOS lo blocca (retry su visibilitychange e primo gesto)
   (function() {
+    var variants = [
+      { src: '/video/hero.mp4',   poster: '/video/hero-poster.jpg' },
+      { src: '/video/hero-2.mp4', poster: '/video/hero-2-poster.jpg' },
+      { src: '/video/hero-3.mp4', poster: '/video/hero-3-poster.jpg' }
+    ];
+    var chosen = variants[Math.floor(Math.random() * variants.length)];
+
     var v = document.querySelector('.hero-video');
     if (!v) return;
 
+    // Imposta poster + source corretti prima del primo paint
+    v.poster = chosen.poster;
+    var s = document.createElement('source');
+    s.src = chosen.src;
+    s.type = 'video/mp4';
+    v.appendChild(s);
+    v.load();
+
+    // Tentativi di play robusti
     function tryPlay() {
       var p = v.play();
       if (p && typeof p.catch === 'function') {
@@ -1779,16 +1796,12 @@
       }
     }
 
-    // Prova subito al caricamento
     tryPlay();
 
-    // Riprova quando l'utente torna sulla tab (cambio scheda, sblocco schermo)
     document.addEventListener('visibilitychange', function() {
       if (!document.hidden && v.paused) tryPlay();
     });
 
-    // Sblocco definitivo: al primo gesto utente (touchstart/click/scroll) il browser
-    // autorizza il play. Una volta che riesce, l'event listener si rimuove (once: true).
     ['touchstart', 'click', 'scroll'].forEach(function(evt) {
       document.addEventListener(evt, tryPlay, { once: true, passive: true });
     });
