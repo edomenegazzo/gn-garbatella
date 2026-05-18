@@ -31,9 +31,7 @@
 e cambia twitter:card a summary_large_image -->
 
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/fonts/fonts.css" />
 
 <style>
   html { color-scheme: only light; }
@@ -671,15 +669,25 @@ e cambia twitter:card a summary_large_image -->
 </header>
 <script>
   // Mostra la navbar SOLO se l'utente arriva dal sito del Nucleo Garbatella.
-  // Chi atterra da social/WhatsApp/link diretti vede la pagina neutra.
+  // Confronto rigoroso sull'hostname (non string-contains) per evitare match
+  // con domini impostori. Wrap in try/catch perché new URL() lancia exception
+  // se il referrer è malformato.
   (function() {
-    var ref = document.referrer || '';
-    if (ref.indexOf('gn-garbatella.vercel.app') !== -1 ||
-        ref.indexOf('nucleogarbatella.it') !== -1 ||
-        ref.indexOf('localhost') !== -1) {
-      var bar = document.getElementById('nav-bar-internal');
-      if (bar) bar.style.display = '';
-    }
+    if (!document.referrer) return;
+    try {
+      var ref = new URL(document.referrer);
+      var allowed = [
+        'gn-garbatella.vercel.app',
+        'nucleogarbatella.it',
+        'www.nucleogarbatella.it',
+        'localhost',
+        '127.0.0.1'
+      ];
+      if (allowed.indexOf(ref.hostname) !== -1) {
+        var bar = document.getElementById('nav-bar-internal');
+        if (bar) bar.style.display = '';
+      }
+    } catch (e) { /* referrer malformato, ignora */ }
   })();
 </script>
 
