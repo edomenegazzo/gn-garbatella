@@ -1381,6 +1381,48 @@
   }
   .legal-content strong { color: #0c0c0c; font-weight: 600; }
 
+  /* Cookie table + revoke button */
+  .cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 22px;
+    font-size: 14.5px;
+  }
+  .cookie-table th {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 10px 12px;
+    background: #0c0c0c;
+    color: #f4f1e8;
+    border: 1px solid #0c0c0c;
+  }
+  .cookie-table td {
+    padding: 10px 12px;
+    border: 1px solid rgba(12,12,12,0.15);
+    color: #2a2a2a;
+    vertical-align: top;
+  }
+  .cookie-table tr:nth-child(even) td { background: rgba(12,12,12,0.03); }
+  .cookie-revoke-btn {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 2px solid #cc1429;
+    color: #cc1429;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    padding: 11px 22px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .cookie-revoke-btn:hover { background: #cc1429; color: #fff; }
+
   /* ===== INSTAGRAM PREVIEW (Home) ===== */
   .insta-section {
     background: #0c0c0c;
@@ -1525,6 +1567,7 @@
 <meta name="twitter:title" content="Cookie · Nucleo Garbatella" />
 <meta name="twitter:description" content="Cookie policy del sito del Nucleo Garbatella di Gioventù Nazionale." />
 
+<script src="/js/cookie-banner.js" defer></script>
 </head>
 <body>
 
@@ -1585,7 +1628,7 @@
       <div class="legal-content">
 
         <div class="legal-meta">
-          Ultimo aggiornamento: 18 maggio 2026 · Versione 1.1
+          Aggiornata il 11 giugno 2026 (v1.2)
         </div>
 
         <h2>1. Cosa sono i cookie</h2>
@@ -1599,6 +1642,37 @@
           <li>Gestire il routing interno tra le pagine (Home, Manifesto, Chi siamo, Blog, Scrivici).</li>
           <li>Conservare temporaneamente i dati inseriti nel modulo di tesseramento durante la sessione di compilazione.</li>
         </ul>
+
+        <h3>Cookie di analisi (Google Analytics 4)</h3>
+        <p>Con il consenso dell'utente, il sito utilizza Google Analytics 4 (di seguito "GA4") fornito da Google Ireland Limited per raccogliere statistiche aggregate sull'utilizzo del sito. La modalità di funzionamento è la seguente:</p>
+        <ul>
+          <li>L'indirizzo IP è anonimizzato prima dell'invio a Google (impostazione <code>anonymize_ip: true</code>).</li>
+          <li>Sono disabilitate le funzionalità di Google Signals e di personalizzazione pubblicitaria.</li>
+          <li>I dati sono trattati in forma aggregata e non consentono identificazione diretta dell'utente.</li>
+          <li>Google opera come responsabile del trattamento ai sensi dell'art. 28 GDPR.</li>
+        </ul>
+        <p>I cookie installati da GA4 sono i seguenti:</p>
+        <table class="cookie-table">
+          <thead>
+            <tr>
+              <th>Nome cookie</th>
+              <th>Durata</th>
+              <th>Finalità</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>_ga</code></td>
+              <td>2 anni</td>
+              <td>Identificatore anonimo dell'utente per statistiche aggregate</td>
+            </tr>
+            <tr>
+              <td><code>_ga_JEGRXN6Y21</code></td>
+              <td>2 anni</td>
+              <td>Identificatore sessione per il sito nucleogarbatella.it</td>
+            </tr>
+          </tbody>
+        </table>
 
         <h3>Cookie di profilazione</h3>
         <p>Questo sito <strong>non utilizza cookie di profilazione</strong> né strumenti di tracciamento pubblicitario di alcun tipo.</p>
@@ -1619,7 +1693,15 @@
         </ul>
         <p>La disabilitazione dei cookie tecnici può compromettere il funzionamento di alcune sezioni del sito (in particolare il modulo di tesseramento).</p>
 
-        <h2>4. Riferimenti</h2>
+        <h2>4. Revocare o modificare il consenso</h2>
+        <p>L'utente può revocare il consenso ai cookie di analisi in qualsiasi momento. Per farlo:</p>
+        <ol>
+          <li>Apri le impostazioni del browser e cancella i cookie/storage del sito nucleogarbatella.it</li>
+          <li>Oppure clicca il pulsante qui sotto:</li>
+        </ol>
+        <p><button type="button" class="cookie-revoke-btn" onclick="if(confirm('Vuoi revocare il consenso ai cookie di analisi? Il banner di consenso ricomparirà alla prossima visita.')){localStorage.removeItem('ng_cookie_consent');alert('Consenso revocato. Ricarica la pagina o visita di nuovo il sito.');}">REVOCA CONSENSO COOKIE DI ANALISI</button></p>
+
+        <h2>5. Riferimenti</h2>
         <p>Per il trattamento generale dei dati personali raccolti tramite questo sito, vedi la nostra <a href="privacy.html">Privacy Policy</a>.</p>
 
       </div>
