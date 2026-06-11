@@ -1,8 +1,8 @@
-# Sito in costruzione — blocca indicizzazione fino a contenuti reali.
-# Quando il sito è pronto, sostituisci con:
-#   User-agent: *
-#   Allow: /
-#   Sitemap: https://gngarbatella.it/sitemap.xml
-
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /banchetto/grazie
+Disallow: /campagne/colombo/grazie
+Disallow: /iscriviti
+Disallow: /blog-draft
+
+Sitemap: https://nucleogarbatella.it/sitemap.xml
