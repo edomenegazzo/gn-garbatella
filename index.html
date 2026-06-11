@@ -1779,30 +1779,50 @@
     var v = document.querySelector('.hero-video');
     if (!v) return;
 
-    // Imposta poster + source corretti prima del primo paint
+    // Attributi essenziali per autoplay iOS Safari
+    v.muted = true;
+    v.playsInline = true;
+    v.setAttribute('playsinline', '');
+    v.setAttribute('webkit-playsinline', '');
+    v.setAttribute('muted', '');
+    v.setAttribute('autoplay', '');
     v.poster = chosen.poster;
+
+    // Set source + load esplicito
+    v.innerHTML = '';
     var s = document.createElement('source');
     s.src = chosen.src;
     s.type = 'video/mp4';
     v.appendChild(s);
     v.load();
 
-    // Tentativi di play robusti
+    // Play robusto con retry su primo gesture utente
     function tryPlay() {
       var p = v.play();
-      if (p && typeof p.catch === 'function') {
-        p.catch(function() { /* autoplay bloccato, resta visibile il poster */ });
+      if (p !== undefined) {
+        p.catch(function() {
+          // Autoplay rifiutato: ritenta sul primo gesto dell'utente
+          var retry = function() {
+            v.play().catch(function() {});
+            document.removeEventListener('touchstart', retry);
+            document.removeEventListener('click', retry);
+          };
+          document.addEventListener('touchstart', retry, { once: true, passive: true });
+          document.addEventListener('click', retry, { once: true });
+        });
       }
     }
 
-    tryPlay();
+    // Aspetta che il video sia pronto prima di tentare play
+    if (v.readyState >= 3) {
+      tryPlay();
+    } else {
+      v.addEventListener('canplay', tryPlay, { once: true });
+    }
 
+    // Riprova quando la tab torna visibile
     document.addEventListener('visibilitychange', function() {
       if (!document.hidden && v.paused) tryPlay();
-    });
-
-    ['touchstart', 'click', 'scroll'].forEach(function(evt) {
-      document.addEventListener(evt, tryPlay, { once: true, passive: true });
     });
   })();
 </script>
