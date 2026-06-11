@@ -12,6 +12,7 @@
 <meta name="description" content="Iscriviti al Nucleo Garbatella di Gioventù Nazionale. Riservato a chi ha tra 14 e 32 anni. La tua richiesta viene poi trasmessa al nazionale di GN." />
 <link rel="preload" href="/fonts/bsd-900.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/ips-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/bsd-800.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/fonts/fonts.css" />
 <!-- Favicon e icone -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -1544,6 +1545,20 @@
 <meta name="twitter:image" content="https://nucleogarbatella.it/og/default.png" />
 
 <script src="/js/cookie-banner.js" defer></script>
+<style>html.fonts-pending body{opacity:0;}</style>
+<script>
+  document.documentElement.classList.add('fonts-pending');
+  (function(){
+    function show(){
+      document.documentElement.classList.remove('fonts-pending');
+      var b=document.body;
+      if(b){b.style.transition='opacity .15s ease-out';}
+    }
+    if(document.fonts&&document.fonts.ready){document.fonts.ready.then(show);setTimeout(show,1200);}
+    else{show();}
+  })();
+</script>
+<noscript><style>html.fonts-pending body{opacity:1 !important;}</style></noscript>
 </head>
 <body>
 
