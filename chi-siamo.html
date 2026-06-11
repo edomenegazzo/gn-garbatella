@@ -503,23 +503,23 @@
     padding-top: 44px;
   }
   @media (max-width: 880px) { .chi-grid { grid-template-columns: 1fr; gap: 30px; } }
-  .chi-body p { font-size: 16.5px; line-height: 1.6; margin-bottom: 16px; color: rgba(244,241,232,0.9); }
-  .chi-body p:first-child {
-    font-family: "Big Shoulders Display", sans-serif;
-    font-weight: 700;
-    font-size: clamp(24px, 3vw, 32px);
-    line-height: 1.1;
-    text-transform: uppercase;
-    color: #f4f1e8;
-    margin-bottom: 22px;
+  .chi-body p {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+    font-size: clamp(16px, 1.8vw, 19px);
+    line-height: 1.65;
+    letter-spacing: normal;
+    text-transform: none;
+    margin-bottom: 16px;
+    color: rgba(244,241,232,0.9);
   }
   .chi-body strong { color: #fff; }
 
   .chi-facts { border: 2px solid rgba(244,241,232,0.25); }
   .fact {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 16px 18px;
     border-bottom: 1px solid rgba(244,241,232,0.12);
     gap: 12px;
@@ -537,6 +537,7 @@
     letter-spacing: -0.01em;
     color: #f4f1e8;
     text-transform: uppercase;
+    text-align: right;
   }
   .fact-value.red { color: #ff5a6e; }
 
