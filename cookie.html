@@ -1422,6 +1422,9 @@
     transition: background 0.15s, color 0.15s;
   }
   .cookie-revoke-btn:hover { background: #cc1429; color: #fff; }
+  .cookie-revoke-wrap {
+    margin: 18px 0 12px;
+  }
 
   /* ===== INSTAGRAM PREVIEW (Home) ===== */
   .insta-section {
@@ -1628,7 +1631,7 @@
       <div class="legal-content">
 
         <div class="legal-meta">
-          Aggiornata il 11 giugno 2026 (v1.2)
+          Aggiornata il 11 giugno 2026 (v1.3)
         </div>
 
         <h2>1. Cosa sono i cookie</h2>
@@ -1674,13 +1677,14 @@
           </tbody>
         </table>
 
-        <h3>Cookie di profilazione</h3>
-        <p>Questo sito <strong>non utilizza cookie di profilazione</strong> né strumenti di tracciamento pubblicitario di alcun tipo.</p>
+        <h3>Cookie di profilazione pubblicitaria</h3>
+        <p>Questo sito <strong>non utilizza cookie di profilazione pubblicitaria</strong> né strumenti di tracciamento per finalità di marketing. I cookie di analisi statistica descritti sopra (Google Analytics 4) sono utilizzati esclusivamente per produrre statistiche aggregate sull'uso del sito, con IP anonimizzato e senza creazione di profili individuali.</p>
 
         <h3>Cookie di terze parti</h3>
         <p>Il sito può includere link verso piattaforme esterne o contenuti incorporati provenienti da servizi di terze parti. Tali servizi possono utilizzare cookie propri di cui non abbiamo controllo diretto. In particolare:</p>
         <ul>
           <li><strong>Instagram</strong> — per i link al nostro profilo <a href="https://www.instagram.com/gngarbatella/" target="_blank" rel="noopener">@gngarbatella</a>. Consulta l'<a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener">informativa privacy di Instagram</a>.</li>
+          <li><strong>Google Ireland Limited</strong> — fornisce il servizio Google Analytics 4 utilizzato per le statistiche di analisi. I cookie installati sono <code>_ga</code> e <code>_ga_JEGRXN6Y21</code>, descritti nella tabella sopra. Per maggiori dettagli sulle modalità di trattamento, consulta la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.</li>
         </ul>
 
         <h2>3. Come gestire i cookie</h2>
@@ -1699,7 +1703,9 @@
           <li>Apri le impostazioni del browser e cancella i cookie/storage del sito nucleogarbatella.it</li>
           <li>Oppure clicca il pulsante qui sotto:</li>
         </ol>
-        <p><button type="button" class="cookie-revoke-btn" onclick="if(confirm('Vuoi revocare il consenso ai cookie di analisi? Il banner di consenso ricomparirà alla prossima visita.')){localStorage.removeItem('ng_cookie_consent');alert('Consenso revocato. Ricarica la pagina o visita di nuovo il sito.');}">REVOCA CONSENSO COOKIE DI ANALISI</button></p>
+        <div class="cookie-revoke-wrap">
+          <button type="button" class="cookie-revoke-btn" onclick="if(confirm('Vuoi revocare il consenso ai cookie di analisi? Il banner di consenso ricomparirà alla prossima visita.')){localStorage.removeItem('ng_cookie_consent');alert('Consenso revocato. Ricarica la pagina o visita di nuovo il sito.');}">REVOCA CONSENSO COOKIE DI ANALISI</button>
+        </div>
 
         <h2>5. Riferimenti</h2>
         <p>Per il trattamento generale dei dati personali raccolti tramite questo sito, vedi la nostra <a href="privacy.html">Privacy Policy</a>.</p>
