@@ -2,16 +2,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <title>Nucleo Garbatella - Favicon</title>
   
-  <!-- Background: ink coerente -->
-  <rect width="512" height="512" fill="#0c0c0c" rx="64"/>
+  <rect width="512" height="512" fill="#f4f1e8" rx="64"/>
   
-  <!-- Logo nested with original viewBox, centered -->
   <svg x="80" y="35" width="352" height="442" viewBox="380 168 358 469" preserveAspectRatio="xMidYMid meet">
     <defs>
       <path id="fbolt" d="m 0,0 h 47.038 l -70.394,-164.02 46.83,13.836 -89.039,-163.436 4.955,40.218 51.081,99.678 -50.552,-18.799 z" transform="matrix(1.3333333,0,0,-1.3333333,589.06827,194.9804)" />
       <path id="fgmark" d="M 0,0 H 227.992 V -111.659 H 41.927 c 0,0 8.941,-106.123 66.754,-106.019 57.813,0.104 83.852,56.03 83.852,56.03 v 20.9 h 35.459 v -114.317 h -35.459 v 36.941 c 0,0 -18.515,-35.953 -83.852,-35.645 -64.442,0.305 -106.176,71.151 -107.181,144.29 z" transform="matrix(1.3333333,0,0,-1.3333333,406.8824,227.0416)" />
     </defs>
-    <use href="#fgmark" fill="#f4f1e8" fill-rule="nonzero" />
-    <use href="#fbolt" fill="#cc1429" fill-rule="nonzero" />
+    <!-- ORDINE CORRETTO: bolt prima, gmark sopra -->
+    <use href="#fbolt" fill="#bf1b2c" fill-rule="nonzero" />
+    <use href="#fgmark" fill="#231f20" fill-rule="nonzero" />
   </svg>
 </svg>

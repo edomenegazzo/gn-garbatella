@@ -2,45 +2,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <title>Nucleo Garbatella · Gioventù Nazionale</title>
   
-  <!-- Background: ink (sito palette #0c0c0c) -->
-  <rect width="1200" height="630" fill="#0c0c0c"/>
+  <!-- Background: cream sito -->
+  <rect width="1200" height="630" fill="#f4f1e8"/>
   
-  <!-- Top red accent line -->
-  <rect x="0" y="0" width="1200" height="8" fill="#cc1429"/>
+  <!-- Top accent line con rosso originale del logo -->
+  <rect x="0" y="0" width="1200" height="8" fill="#bf1b2c"/>
   
-  <!-- Logo nested SVG (with original viewBox) -->
+  <!-- Logo nested SVG: ORDINE CORRETTO come nel file originale -->
   <svg x="90" y="90" width="340" height="445" viewBox="380 168 358 469">
     <defs>
       <path id="bolt" d="m 0,0 h 47.038 l -70.394,-164.02 46.83,13.836 -89.039,-163.436 4.955,40.218 51.081,99.678 -50.552,-18.799 z" transform="matrix(1.3333333,0,0,-1.3333333,589.06827,194.9804)" />
       <path id="gmark" d="M 0,0 H 227.992 V -111.659 H 41.927 c 0,0 8.941,-106.123 66.754,-106.019 57.813,0.104 83.852,56.03 83.852,56.03 v 20.9 h 35.459 v -114.317 h -35.459 v 36.941 c 0,0 -18.515,-35.953 -83.852,-35.645 -64.442,0.305 -106.176,71.151 -107.181,144.29 z" transform="matrix(1.3333333,0,0,-1.3333333,406.8824,227.0416)" />
     </defs>
-    <use href="#gmark" fill="#f4f1e8" fill-rule="nonzero" />
-    <use href="#bolt" fill="#cc1429" fill-rule="nonzero" />
+    <!-- ORDINE FILE ORIGINALE: prima bolt (fulmine), poi gmark (G) sopra -->
+    <use href="#bolt" fill="#bf1b2c" fill-rule="nonzero" />
+    <use href="#gmark" fill="#231f20" fill-rule="nonzero" />
   </svg>
   
   <!-- Right side: text identity -->
   <g transform="translate(500, 230)">
-    <!-- Main title NUCLEO GARBATELLA -->
     <text x="0" y="0" font-family="'Big Shoulders Display', 'Arial Black', sans-serif" 
-          font-weight="900" font-size="76" fill="#f4f1e8" letter-spacing="-1">NUCLEO</text>
+          font-weight="900" font-size="76" fill="#231f20" letter-spacing="-1">NUCLEO</text>
     <text x="0" y="78" font-family="'Big Shoulders Display', 'Arial Black', sans-serif" 
-          font-weight="900" font-size="76" fill="#f4f1e8" letter-spacing="-1">GARBATELLA</text>
+          font-weight="900" font-size="76" fill="#231f20" letter-spacing="-1">GARBATELLA</text>
     
-    <!-- Decorative line -->
-    <rect x="0" y="110" width="60" height="4" fill="#cc1429"/>
+    <rect x="0" y="110" width="60" height="4" fill="#bf1b2c"/>
     
-    <!-- Subtitle Gioventù Nazionale -->
     <text x="0" y="160" font-family="'IBM Plex Sans', Arial, sans-serif" 
-          font-weight="500" font-size="26" fill="#e8e1d0" letter-spacing="0.5">Gioventù Nazionale</text>
+          font-weight="500" font-size="26" fill="#231f20" letter-spacing="0.5">Gioventù Nazionale</text>
     
-    <!-- Tagline -->
     <text x="0" y="200" font-family="'IBM Plex Sans', Arial, sans-serif" 
-          font-weight="400" font-size="20" fill="#aaa39a" letter-spacing="0.3">La destra giovanile e identitaria</text>
+          font-weight="400" font-size="20" fill="#4a4a4a" letter-spacing="0.3">La destra giovanile e identitaria</text>
     <text x="0" y="228" font-family="'IBM Plex Sans', Arial, sans-serif" 
-          font-weight="400" font-size="20" fill="#aaa39a" letter-spacing="0.3">a Roma Sud</text>
+          font-weight="400" font-size="20" fill="#4a4a4a" letter-spacing="0.3">a Roma Sud</text>
   </g>
   
-  <!-- Bottom URL marker -->
   <text x="500" y="585" font-family="'IBM Plex Sans', Arial, sans-serif" 
-        font-weight="600" font-size="18" fill="#aaa39a" letter-spacing="2">NUCLEOGARBATELLA.IT</text>
+        font-weight="600" font-size="18" fill="#4a4a4a" letter-spacing="2">NUCLEOGARBATELLA.IT</text>
 </svg>
