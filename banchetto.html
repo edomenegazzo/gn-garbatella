@@ -461,7 +461,6 @@
                      enterkeyhint="next" aria-required="true"
                      placeholder="+39 333 1234567" />
               <span class="form-error" id="err-telefono"></span>
-              <span class="form-help">Almeno 9 cifre, formato libero.</span>
             </div>
           </div>
 
@@ -521,48 +520,6 @@
             </div>
           </div>
 
-          <div class="form-row" style="grid-template-columns: 3fr 1fr;">
-            <div class="form-field">
-              <label class="form-label" for="indirizzo_via">Via / Piazza</label>
-              <input class="form-input" type="text" id="indirizzo_via" name="indirizzo_via"
-                     maxlength="120"
-                     autocomplete="address-line1" autocapitalize="words"
-                     enterkeyhint="next"
-                     placeholder="es. Via G. Pascoli" />
-              <span class="form-error" id="err-indirizzo_via"></span>
-            </div>
-            <div class="form-field">
-              <label class="form-label" for="indirizzo_civico">Civico</label>
-              <input class="form-input" type="text" id="indirizzo_civico" name="indirizzo_civico"
-                     maxlength="10"
-                     autocomplete="address-line2"
-                     enterkeyhint="next"
-                     placeholder="24/B" />
-              <span class="form-error" id="err-indirizzo_civico"></span>
-            </div>
-          </div>
-
-          <div class="form-row" style="grid-template-columns: 1fr 2fr;">
-            <div class="form-field">
-              <label class="form-label" for="cap">CAP</label>
-              <input class="form-input" type="text" id="cap" name="cap"
-                     maxlength="5" pattern="\d{5}"
-                     inputmode="numeric"
-                     autocomplete="postal-code"
-                     enterkeyhint="next"
-                     placeholder="00145" />
-              <span class="form-error" id="err-cap"></span>
-            </div>
-            <div class="form-field">
-              <label class="form-label" for="comune">Comune</label>
-              <input class="form-input" type="text" id="comune" name="comune"
-                     maxlength="80"
-                     autocomplete="address-level2" autocapitalize="words"
-                     enterkeyhint="next"
-                     placeholder="Roma" />
-              <span class="form-error" id="err-comune"></span>
-            </div>
-          </div>
         </div>
 
         <div class="form-block">
@@ -692,7 +649,6 @@
     const v = input.validity;
     if (v.valueMissing) return 'Campo obbligatorio.';
     if (v.typeMismatch && input.type === 'email') return 'Email non valida.';
-    if (v.patternMismatch && input.name === 'cap') return 'Il CAP deve essere di 5 cifre.';
     if (v.tooShort) return 'Troppo breve.';
     if (v.tooLong) return 'Troppo lungo.';
     return 'Valore non valido.';
@@ -822,10 +778,6 @@
       anno_nascita: parseInt(dAnno.value, 10),
       data_nascita: dHidden.value || null,
       municipio: form.municipio.value,
-      indirizzo_via: form.indirizzo_via.value.trim(),
-      indirizzo_civico: form.indirizzo_civico.value.trim(),
-      cap: form.cap.value.trim(),
-      comune: form.comune.value.trim(),
       consenso_privacy: document.getElementById('consenso_privacy').checked,
       consenso_newsletter: document.getElementById('consenso_newsletter').checked,
       fonte: 'banchetto'
